@@ -1,6 +1,6 @@
 # Open Commerce
 
-Open Commerce is an open-source collection of commerce skills, datasets, prompts, and standards for AI agents. Commerce software has OMS, ERP, and WMS, but AI-native commerce requires reusable skills, knowledge, economic intelligence, and agent tooling. Open Commerce aims to become the foundational commerce capability layer for AI Agents, LangGraph, MCP Servers, n8n, OpenAI Codex, Claude Code, and commerce automation systems.
+Open Commerce is the open standard and economic intelligence layer for AI-native commerce. Commerce has OMS, ERP, and WMS. AI-native commerce needs a Profit Layer, Forecast Layer, and Economic Intelligence Layer. Open Commerce aims to become that foundation.
 
 The repository is designed to feel like LangChain for Commerce or an OpenAI Agents SDK for Commerce rather than a traditional OMS project. It prioritizes skills, datasets, documentation, community contributions, and agent interoperability before complex applications.
 
@@ -23,6 +23,10 @@ Think of it as shared commerce capability infrastructure for agents.
 | Area | Purpose |
 | --- | --- |
 | `skills/` | Reusable commerce skills with README, examples, interface specs, and future MCP support notes. |
+| `.agents/skills/` | Codex-compatible repo-scoped Agent Skills. |
+| `.claude/skills/` | Claude Code-compatible project skills. |
+| `plugins/` | Codex and Claude plugin packages with skills and MCP configuration. |
+| `src/opencommerce_mcp/` | Early MCP server entrypoint for agent tools. |
 | `datasets/` | Starter marketplace, logistics, payment, and advertising economics datasets. |
 | `schemas/` | JSON Schemas for profit, forecast, inventory, shipment, order, and related commerce records. |
 | `prompts/` | Markdown prompt assets for commerce agents. |
@@ -42,6 +46,7 @@ python -m pip install -e ".[dev]"
 python -m unittest discover -s tests -p "test*.py"
 python tools/validate_schemas.py
 python tools/validate_skills.py
+python tools/validate_agent_packages.py
 python tools/validate_datasets.py
 python tools/validate_markdown.py
 python tools/validate_contribution.py
@@ -81,6 +86,18 @@ See [ROADMAP.md](ROADMAP.md) for milestone details.
 Datasets use explicit trust status. `draft` datasets include official source references and representative platform values where public sources were confirmed, but they are not complete production-ready category tables. `starter` datasets are structural or source-discovery placeholders and must not be treated as verified economics.
 
 See [docs/product-sale-skill-verification.md](docs/product-sale-skill-verification.md) for the current product-sale skill flow and platform-data verification matrix.
+
+## Agent Packages
+
+Open Commerce includes runtime entrypoints for coding agents and external AI systems:
+
+- Codex skills: `.agents/skills/`
+- Claude skills: `.claude/skills/`
+- Codex plugin: `plugins/codex/open-commerce`
+- Claude plugin: `plugins/claude/open-commerce`
+- MCP server: `python -m opencommerce_mcp.server`
+
+See [docs/agent-packages.md](docs/agent-packages.md) and [docs/mcp-server.md](docs/mcp-server.md).
 
 ## Governance
 

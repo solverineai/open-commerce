@@ -1,0 +1,30 @@
+# Open Commerce
+
+> Open Commerce is the open standard and economic intelligence layer for AI-native commerce.
+
+Open Commerce provides commerce datasets, JSON Schemas, profitability calculations, prompt assets, agent skills, and MCP interfaces for AI-native commerce systems.
+
+## Core Documents
+
+- Repository: https://github.com/solverineai/open-commerce
+- README: https://github.com/solverineai/open-commerce/blob/main/README.md
+- Roadmap: https://github.com/solverineai/open-commerce/blob/main/ROADMAP.md
+- Governance: https://github.com/solverineai/open-commerce/blob/main/GOVERNANCE.md
+- Agent integrations: https://github.com/solverineai/open-commerce/blob/main/docs/agent-integrations.md
+- Product sale verification: https://github.com/solverineai/open-commerce/blob/main/docs/product-sale-skill-verification.md
+
+## Machine-Readable Artifacts
+
+- JSON Schemas: https://github.com/solverineai/open-commerce/tree/main/schemas
+- Economics dataset schema: https://github.com/solverineai/open-commerce/blob/main/datasets/economics-dataset.schema.json
+- Marketplace datasets: https://github.com/solverineai/open-commerce/tree/main/datasets/marketplaces
+- Agent skills: https://github.com/solverineai/open-commerce/tree/main/skills
+- Codex packages: https://github.com/solverineai/open-commerce/tree/main/plugins/codex
+- Claude packages: https://github.com/solverineai/open-commerce/tree/main/plugins/claude
+- MCP server: https://github.com/solverineai/open-commerce/tree/main/src/opencommerce_mcp
+
+## Usage Constraints
+
+- Do not use `starter` datasets as verified platform economics.
+- Use `draft` datasets only with source IDs, dataset version, and confidence warnings.
+- Do not infer missing fee, settlement, shipping, return, or advertising values from examples.

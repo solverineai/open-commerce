@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://opencommerce.dev/datasets/economics-dataset.schema.json",
+  "$id": "https://raw.githubusercontent.com/solverineai/open-commerce/main/datasets/economics-dataset.schema.json",
   "title": "Open Commerce Economics Dataset",
   "description": "Shared schema for marketplace, logistics, payment, and advertising economics datasets.",
   "type": "object",

@@ -1,7 +1,7 @@
 repository:
   name: open-commerce
-  description: Open-source commerce skills, datasets, prompts, and standards for AI agents.
-  homepage: https://github.com/solverine/open-commerce
+  description: Open standard and economic intelligence layer for AI-native commerce.
+  homepage: https://github.com/solverineai/open-commerce
   private: false
   has_issues: true
   has_projects: false

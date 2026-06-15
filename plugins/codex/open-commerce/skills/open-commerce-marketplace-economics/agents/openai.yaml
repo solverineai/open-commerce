@@ -1,0 +1,6 @@
+interface:
+  display_name: "Open Commerce Marketplace Economics"
+  short_description: "Inspect platform economics datasets with source-status warnings."
+  default_prompt: "Check whether this platform economics data is safe to use."
+policy:
+  allow_implicit_invocation: true

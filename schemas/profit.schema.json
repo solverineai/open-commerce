@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://opencommerce.dev/schemas/profit.schema.json",
+  "$id": "https://raw.githubusercontent.com/solverineai/open-commerce/main/schemas/profit.schema.json",
   "title": "Open Commerce Profit Analysis",
   "description": "Profitability input and output record for deterministic commerce economics calculations.",
   "type": "object",

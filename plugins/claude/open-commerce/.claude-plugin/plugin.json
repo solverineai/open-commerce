@@ -1,0 +1,22 @@
+{
+  "name": "open-commerce",
+  "displayName": "Open Commerce",
+  "version": "0.1.0",
+  "description": "Commerce skills, source-aware economics datasets, and MCP server configuration for AI-native commerce workflows.",
+  "author": {
+    "name": "Solverine",
+    "url": "https://github.com/solverineai"
+  },
+  "homepage": "https://github.com/solverineai/open-commerce",
+  "repository": "https://github.com/solverineai/open-commerce",
+  "license": "Apache-2.0",
+  "keywords": [
+    "commerce",
+    "agent-skills",
+    "mcp",
+    "profitability",
+    "marketplace-economics"
+  ],
+  "skills": "./skills/",
+  "mcpServers": "./.mcp.json"
+}

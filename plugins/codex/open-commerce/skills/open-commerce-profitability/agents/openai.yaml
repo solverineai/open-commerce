@@ -1,0 +1,6 @@
+interface:
+  display_name: "Open Commerce Profitability"
+  short_description: "Calculate product-sale profit with source-aware cost inputs."
+  default_prompt: "Evaluate this product sale with Open Commerce profitability rules."
+policy:
+  allow_implicit_invocation: true

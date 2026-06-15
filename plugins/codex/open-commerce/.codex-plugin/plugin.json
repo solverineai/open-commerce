@@ -1,0 +1,40 @@
+{
+  "name": "open-commerce",
+  "version": "0.1.0",
+  "description": "Commerce skills, source-aware economics datasets, and MCP tools for AI-native commerce workflows.",
+  "author": {
+    "name": "Solverine",
+    "url": "https://github.com/solverineai"
+  },
+  "homepage": "https://github.com/solverineai/open-commerce",
+  "repository": "https://github.com/solverineai/open-commerce",
+  "license": "Apache-2.0",
+  "keywords": [
+    "commerce",
+    "agent-skills",
+    "mcp",
+    "profitability",
+    "marketplace-economics"
+  ],
+  "skills": "./skills/",
+  "mcpServers": "./.mcp.json",
+  "interface": {
+    "displayName": "Open Commerce",
+    "shortDescription": "Commerce economics skills for AI-native commerce agents.",
+    "longDescription": "Open Commerce provides source-aware profitability and marketplace economics workflows for Codex tasks, MCP tools, and commerce automation systems.",
+    "developerName": "Solverine",
+    "category": "Developer",
+    "capabilities": [
+      "Read",
+      "Execute",
+      "Analyze"
+    ],
+    "websiteURL": "https://github.com/solverineai/open-commerce",
+    "defaultPrompt": [
+      "Evaluate product profitability with Open Commerce.",
+      "Check marketplace economics source status.",
+      "Inspect fee assumptions before agent action."
+    ],
+    "brandColor": "#0F766E"
+  }
+}

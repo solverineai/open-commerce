@@ -14,6 +14,11 @@ REQUIRED_FILES = [
     "CONTRIBUTING.md",
     "CODE_OF_CONDUCT.md",
     "SECURITY.md",
+    "AGENTS.md",
+    "CLAUDE.md",
+    "CITATION.cff",
+    "llms.txt",
+    "mkdocs.yml",
     "GOVERNANCE.md",
     "MAINTAINERS.md",
     "ROADMAP.md",
@@ -54,7 +59,7 @@ def main() -> int:
         raise SystemExit(f"Missing required labels: {', '.join(missing_labels)}")
 
     readme = (ROOT / "README.md").read_text(encoding="utf-8")
-    required_phrase = "Open Commerce is an open-source collection of commerce skills, datasets, prompts, and standards for AI agents."
+    required_phrase = "Open Commerce is the open standard and economic intelligence layer for AI-native commerce."
     if not readme.startswith("# Open Commerce\n\n" + required_phrase):
         raise SystemExit("README.md must open with the required positioning paragraph")
 

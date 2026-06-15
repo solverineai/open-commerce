@@ -33,6 +33,9 @@ jobs:
       - name: Validate skills
         run: python tools/validate_skills.py
 
+      - name: Validate agent packages
+        run: python tools/validate_agent_packages.py
+
       - name: Validate datasets
         run: python tools/validate_datasets.py
 

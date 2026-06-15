@@ -16,6 +16,9 @@ class RepositoryAssetsTest(unittest.TestCase):
             "docs",
             "governance",
             ".github",
+            ".agents",
+            ".claude",
+            "plugins",
         ]:
             self.assertTrue((ROOT / directory).is_dir(), directory)
 
@@ -35,6 +38,17 @@ class RepositoryAssetsTest(unittest.TestCase):
     def test_skill_count(self):
         interface_paths = sorted((ROOT / "skills").glob("*/*/interface.json"))
         self.assertEqual(len(interface_paths), 15)
+
+    def test_agent_skill_packages_exist(self):
+        for root in [
+            ROOT / ".agents" / "skills",
+            ROOT / ".claude" / "skills",
+            ROOT / "plugins" / "codex" / "open-commerce" / "skills",
+            ROOT / "plugins" / "claude" / "open-commerce" / "skills",
+        ]:
+            with self.subTest(root=root):
+                skill_paths = sorted(root.glob("*/SKILL.md"))
+                self.assertGreaterEqual(len(skill_paths), 2)
 
 
 if __name__ == "__main__":

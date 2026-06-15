@@ -1,0 +1,14 @@
+{
+  "name": "open-commerce",
+  "owner": {
+    "name": "Solverine",
+    "url": "https://github.com/solverineai"
+  },
+  "plugins": [
+    {
+      "name": "open-commerce",
+      "source": "./plugins/claude/open-commerce",
+      "description": "Open Commerce skills and MCP server configuration for Claude Code."
+    }
+  ]
+}

@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://opencommerce.dev/schemas/order.schema.json",
+  "$id": "https://raw.githubusercontent.com/solverineai/open-commerce/main/schemas/order.schema.json",
   "title": "Open Commerce Order",
   "description": "Order economics record without required PII, suitable for AI agent workflows and commerce analysis.",
   "type": "object",

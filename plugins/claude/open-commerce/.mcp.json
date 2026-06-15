@@ -1,0 +1,15 @@
+{
+  "mcpServers": {
+    "open-commerce": {
+      "command": "python",
+      "args": [
+        "-m",
+        "opencommerce_mcp.server"
+      ],
+      "env": {
+        "PYTHONPATH": "${CLAUDE_PROJECT_DIR}/src",
+        "OPENCOMMERCE_DATASETS": "${CLAUDE_PROJECT_DIR}/datasets"
+      }
+    }
+  }
+}

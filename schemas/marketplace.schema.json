@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://opencommerce.dev/schemas/marketplace.schema.json",
+  "$id": "https://raw.githubusercontent.com/solverineai/open-commerce/main/schemas/marketplace.schema.json",
   "title": "Open Commerce Marketplace",
   "description": "Marketplace economics record for fees, settlement rules, shipping costs, return costs, metadata, sources, and version history.",
   "type": "object",

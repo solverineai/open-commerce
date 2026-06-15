@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://opencommerce.dev/schemas/forecast.schema.json",
+  "$id": "https://raw.githubusercontent.com/solverineai/open-commerce/main/schemas/forecast.schema.json",
   "title": "Open Commerce Forecast",
   "description": "Forecast record for demand, inventory, margin, and fulfillment planning.",
   "type": "object",

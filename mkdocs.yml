@@ -1,0 +1,19 @@
+site_name: Open Commerce
+site_description: Open standard and economic intelligence layer for AI-native commerce.
+site_url: https://opencommerce.dev/
+repo_url: https://github.com/solverineai/open-commerce
+repo_name: solverineai/open-commerce
+theme:
+  name: material
+nav:
+  - Home: README.md
+  - Architecture: docs/architecture.md
+  - Agent Integrations: docs/agent-integrations.md
+  - Agent Packages: docs/agent-packages.md
+  - MCP Server: docs/mcp-server.md
+  - Dataset Standard: docs/dataset-standard.md
+  - Schema Standard: docs/schema-standard.md
+  - Profit Engine: docs/profit-engine.md
+  - Roadmap: docs/roadmap.md
+  - Community: docs/community.md
+  - Open Source Readiness: docs/open-source-program-readiness.md

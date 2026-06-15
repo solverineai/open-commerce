@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://opencommerce.dev/schemas/inventory.schema.json",
+  "$id": "https://raw.githubusercontent.com/solverineai/open-commerce/main/schemas/inventory.schema.json",
   "title": "Open Commerce Inventory",
   "description": "Inventory state record for agentic replenishment, stockout, and profitability workflows.",
   "type": "object",

@@ -18,6 +18,9 @@ keywords = [
   "profitability",
   "forecasting",
   "ai-agents",
+  "agent-skills",
+  "mcp",
+  "json-schema",
   "open-source"
 ]
 classifiers = [
@@ -37,14 +40,18 @@ dependencies = []
 
 [project.optional-dependencies]
 dev = [
-  "jsonschema>=4.18"
+  "jsonschema>=4.18",
+  "PyYAML>=6.0"
+]
+mcp = [
+  "mcp>=1.0"
 ]
 
 [project.urls]
-Homepage = "https://github.com/solverine/open-commerce"
-Repository = "https://github.com/solverine/open-commerce"
-Issues = "https://github.com/solverine/open-commerce/issues"
-Discussions = "https://github.com/solverine/open-commerce/discussions"
+Homepage = "https://github.com/solverineai/open-commerce"
+Repository = "https://github.com/solverineai/open-commerce"
+Issues = "https://github.com/solverineai/open-commerce/issues"
+Discussions = "https://github.com/solverineai/open-commerce/discussions"
 
 [tool.setuptools.packages.find]
 where = ["src"]

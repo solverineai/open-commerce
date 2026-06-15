@@ -1,0 +1,14 @@
+{
+  "mcpServers": {
+    "open-commerce": {
+      "command": "python",
+      "args": [
+        "-m",
+        "opencommerce_mcp.server"
+      ],
+      "env": {
+        "OPENCOMMERCE_DATASETS": "${OPENCOMMERCE_DATASETS}"
+      }
+    }
+  }
+}

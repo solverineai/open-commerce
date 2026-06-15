@@ -1,0 +1,18 @@
+cff-version: 1.2.0
+message: "If you use Open Commerce, please cite this repository."
+title: "Open Commerce"
+abstract: "Open standard and economic intelligence layer for AI-native commerce."
+authors:
+  - family-names: "Solverine"
+version: "0.1.0"
+date-released: "2026-06-15"
+license: "Apache-2.0"
+repository-code: "https://github.com/solverineai/open-commerce"
+url: "https://github.com/solverineai/open-commerce"
+keywords:
+  - commerce
+  - agent-skills
+  - mcp
+  - json-schema
+  - profitability
+  - marketplace-economics
