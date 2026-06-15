@@ -1,0 +1,28 @@
+{
+  "name": "marketplace_fee_lookup",
+  "domain": "marketplace",
+  "version": "0.1.0",
+  "description": "Look up source-backed marketplace fee rules from Open Commerce datasets.",
+  "input_schema": {
+    "type": "object",
+    "required": ["marketplace_id"],
+    "properties": {
+      "marketplace_id": { "type": "string" },
+      "category": { "type": "string" },
+      "price": { "type": "number" },
+      "currency": { "type": "string" },
+      "dataset_version": { "type": "string" }
+    }
+  },
+  "output_schema": {
+    "type": "object",
+    "required": ["matches", "dataset_status", "source_references"],
+    "properties": {
+      "matches": { "type": "array", "items": { "type": "object" } },
+      "dataset_status": { "type": "string" },
+      "source_references": { "type": "array", "items": { "type": "object" } },
+      "warnings": { "type": "array", "items": { "type": "string" } }
+    }
+  },
+  "agent_compatibility": ["LangGraph", "MCP", "n8n", "OpenAI Codex", "Claude Code"]
+}

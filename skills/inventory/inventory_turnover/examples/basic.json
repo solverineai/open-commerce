@@ -1,0 +1,13 @@
+{
+  "request": {
+    "sold_value": 1200000,
+    "average_inventory_value": 300000,
+    "period_days": 30,
+    "basis": "value"
+  },
+  "response": {
+    "turnover_rate": 4,
+    "days_of_inventory": 7.5,
+    "basis": "value"
+  }
+}

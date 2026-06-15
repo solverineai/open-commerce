@@ -1,0 +1,81 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://opencommerce.dev/schemas/inventory.schema.json",
+  "title": "Open Commerce Inventory",
+  "description": "Inventory state record for agentic replenishment, stockout, and profitability workflows.",
+  "type": "object",
+  "required": ["schema_version", "sku", "quantity_available", "quantity_reserved", "updated_at"],
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$"
+    },
+    "sku": {
+      "type": "string",
+      "minLength": 1
+    },
+    "warehouse_id": {
+      "type": "string"
+    },
+    "quantity_available": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "quantity_reserved": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "quantity_inbound": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "safety_stock": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "reorder_point": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "lead_time_days": {
+      "type": "number",
+      "minimum": 0
+    },
+    "updated_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "agent_context": {
+      "$ref": "#/$defs/agent_context"
+    },
+    "external_refs": {
+      "$ref": "#/$defs/external_refs"
+    }
+  },
+  "$defs": {
+    "agent_context": {
+      "type": "object",
+      "additionalProperties": true
+    },
+    "external_refs": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["system", "id"],
+        "additionalProperties": false,
+        "properties": {
+          "system": {
+            "type": "string"
+          },
+          "id": {
+            "type": "string"
+          },
+          "url": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

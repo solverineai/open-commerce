@@ -1,0 +1,14 @@
+{
+  "request": {
+    "sku": "SKU-EXAMPLE-001",
+    "quantity_available": 30,
+    "quantity_reserved": 5,
+    "quantity_inbound": 20,
+    "safety_stock": 10
+  },
+  "response": {
+    "health_status": "watch",
+    "risk_level": "medium",
+    "recommendations": ["Add demand forecast before reorder automation."]
+  }
+}

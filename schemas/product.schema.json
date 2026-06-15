@@ -1,0 +1,118 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://opencommerce.dev/schemas/product.schema.json",
+  "title": "Open Commerce Product",
+  "description": "AI-agent friendly product record for profitability, inventory, and marketplace analysis.",
+  "type": "object",
+  "required": ["schema_version", "product_id", "sku", "title"],
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$"
+    },
+    "product_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "sku": {
+      "type": "string",
+      "minLength": 1
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1
+    },
+    "brand": {
+      "type": "string"
+    },
+    "category": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string",
+      "enum": ["draft", "active", "paused", "discontinued", "archived"]
+    },
+    "cost": {
+      "$ref": "#/$defs/money"
+    },
+    "list_price": {
+      "$ref": "#/$defs/money"
+    },
+    "attributes": {
+      "type": "object",
+      "additionalProperties": {
+        "type": ["string", "number", "boolean", "null"]
+      }
+    },
+    "marketplace_listings": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["marketplace_id", "listing_id"],
+        "additionalProperties": false,
+        "properties": {
+          "marketplace_id": {
+            "type": "string"
+          },
+          "listing_id": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          },
+          "external_url": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "agent_context": {
+      "$ref": "#/$defs/agent_context"
+    },
+    "external_refs": {
+      "$ref": "#/$defs/external_refs"
+    }
+  },
+  "$defs": {
+    "money": {
+      "type": "object",
+      "required": ["amount", "currency"],
+      "additionalProperties": false,
+      "properties": {
+        "amount": {
+          "type": "number"
+        },
+        "currency": {
+          "type": "string",
+          "minLength": 3,
+          "maxLength": 3
+        }
+      }
+    },
+    "agent_context": {
+      "type": "object",
+      "description": "JSON-serializable context for LangGraph state, MCP tool payloads, and coding-agent workflows.",
+      "additionalProperties": true
+    },
+    "external_refs": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["system", "id"],
+        "additionalProperties": false,
+        "properties": {
+          "system": {
+            "type": "string"
+          },
+          "id": {
+            "type": "string"
+          },
+          "url": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

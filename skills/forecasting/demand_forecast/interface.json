@@ -1,0 +1,22 @@
+{
+  "name": "demand_forecast",
+  "domain": "forecasting",
+  "version": "0.1.0",
+  "description": "Estimate future demand for commerce planning.",
+  "input_schema": {
+    "type": "object",
+    "required": ["sku", "history", "horizon"],
+    "properties": {
+      "sku": { "type": "string" },
+      "marketplace_id": { "type": "string" },
+      "history": { "type": "array", "items": { "type": "object" } },
+      "stockout_periods": { "type": "array", "items": { "type": "object" } },
+      "horizon": { "type": "object" },
+      "granularity": { "type": "string", "default": "day" }
+    }
+  },
+  "output_schema": {
+    "$ref": "../../../schemas/forecast.schema.json"
+  },
+  "agent_compatibility": ["LangGraph", "MCP", "n8n", "OpenAI Codex", "Claude Code"]
+}

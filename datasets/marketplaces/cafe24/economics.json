@@ -1,0 +1,89 @@
+{
+  "schema_version": "0.1.0",
+  "dataset_type": "marketplace",
+  "provider": {
+    "id": "cafe24",
+    "name": "Cafe24",
+    "category": "commerce_platform",
+    "country_codes": ["KR"]
+  },
+  "coverage": {
+    "markets": ["KR"],
+    "currency": "KRW",
+    "status": "starter"
+  },
+  "fee_structures": [
+    {
+      "id": "platform-fees",
+      "name": "Platform and service fees",
+      "status": "starter",
+      "basis": "Plan, service, and app dependent",
+      "value": null,
+      "conditions": ["Plan-specific and optional service fees require verification."],
+      "source_ref_ids": ["official-provider-docs"],
+      "notes": "Starter placeholder for Cafe24 platform economics."
+    }
+  ],
+  "settlement_rules": [
+    {
+      "id": "merchant-settlement",
+      "name": "Merchant settlement timing",
+      "status": "starter",
+      "basis": "Payment provider and platform policy",
+      "value": null,
+      "conditions": ["Settlement may depend on configured payment provider."],
+      "source_ref_ids": ["official-provider-docs"],
+      "notes": "Add source-backed payout and deduction rules."
+    }
+  ],
+  "shipping_costs": [
+    {
+      "id": "seller-shipping-cost",
+      "name": "Seller shipping cost",
+      "status": "starter",
+      "basis": "Merchant shipping configuration",
+      "value": null,
+      "conditions": ["Shipping is generally merchant configured and carrier dependent."],
+      "source_ref_ids": ["official-provider-docs"],
+      "notes": "Add template examples for carrier-linked shipping."
+    }
+  ],
+  "return_costs": [
+    {
+      "id": "return-shipping-cost",
+      "name": "Return shipping cost",
+      "status": "starter",
+      "basis": "Merchant return policy",
+      "value": null,
+      "conditions": ["Return rules are merchant and carrier dependent."],
+      "source_ref_ids": ["official-provider-docs"],
+      "notes": "Add source-backed return cost guidance."
+    }
+  ],
+  "metadata": {
+    "version": "0.1.0",
+    "status": "starter",
+    "license": "Apache-2.0",
+    "last_reviewed": "2026-06-15",
+    "maintainers": ["Solverine"],
+    "ai_usage_notes": "Do not treat starter values as verified economics."
+  },
+  "source_references": [
+    {
+      "id": "official-provider-docs",
+      "title": "Official Cafe24 platform economics documentation needed",
+      "publisher": "Cafe24",
+      "url": null,
+      "accessed_at": null,
+      "reliability": "unknown",
+      "notes": "Replace with public official source references before marking reviewed."
+    }
+  ],
+  "version_history": [
+    {
+      "version": "0.1.0",
+      "released_at": "2026-06-15",
+      "changes": ["Initial starter economics dataset shell."]
+    }
+  ]
+}

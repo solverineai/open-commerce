@@ -1,0 +1,26 @@
+{
+  "name": "inventory_turnover",
+  "domain": "inventory",
+  "version": "0.1.0",
+  "description": "Calculate inventory turnover and days of inventory.",
+  "input_schema": {
+    "type": "object",
+    "required": ["sold_value", "average_inventory_value", "period_days"],
+    "properties": {
+      "sold_value": { "type": "number" },
+      "average_inventory_value": { "type": "number" },
+      "period_days": { "type": "number", "minimum": 1 },
+      "basis": { "type": "string", "default": "value" }
+    }
+  },
+  "output_schema": {
+    "type": "object",
+    "required": ["turnover_rate", "days_of_inventory"],
+    "properties": {
+      "turnover_rate": { "type": "number" },
+      "days_of_inventory": { "type": "number" },
+      "basis": { "type": "string" }
+    }
+  },
+  "agent_compatibility": ["LangGraph", "MCP", "n8n", "OpenAI Codex", "Claude Code"]
+}

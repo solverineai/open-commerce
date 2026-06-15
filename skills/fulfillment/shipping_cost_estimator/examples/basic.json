@@ -1,0 +1,16 @@
+{
+  "request": {
+    "carrier_id": "cj",
+    "origin_market": "KR",
+    "destination_market": "KR",
+    "weight_grams": 800,
+    "service_level": "standard",
+    "currency": "KRW"
+  },
+  "response": {
+    "estimated_shipping_cost": null,
+    "dataset_status": "starter",
+    "matched_rules": [],
+    "warnings": ["Starter carrier dataset contains no verified rate table yet."]
+  }
+}

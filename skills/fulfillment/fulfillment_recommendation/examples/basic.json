@@ -1,0 +1,17 @@
+{
+  "request": {
+    "order_id": "ORDER-EXAMPLE-001",
+    "sku": "SKU-EXAMPLE-001",
+    "marketplace_id": "coupang",
+    "options": [
+      { "carrier_id": "cj", "estimated_cost": 3200, "service_level": "standard" }
+    ],
+    "constraints": ["meet_promise_date"]
+  },
+  "response": {
+    "recommendation": "use_lowest_verified_cost_option",
+    "rationale": ["Only one option provided in example payload."],
+    "risks": ["Carrier rate source is not verified."],
+    "missing_data": ["promise_date", "carrier_dataset_status"]
+  }
+}

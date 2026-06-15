@@ -1,0 +1,19 @@
+{
+  "request": {
+    "sku": "SKU-EXAMPLE-001",
+    "own_price": 35000,
+    "currency": "KRW",
+    "competitor_prices": [
+      { "seller": "example-seller", "price": 33900, "observed_at": "2026-06-15T00:00:00Z" }
+    ],
+    "minimum_margin_rate": 0.2
+  },
+  "response": {
+    "gap_summary": {
+      "lowest_competitor_price": 33900,
+      "own_price_gap": 1100
+    },
+    "warnings": ["Example competitor data is synthetic."],
+    "recommendations": ["Check profitability before matching lower price."]
+  }
+}

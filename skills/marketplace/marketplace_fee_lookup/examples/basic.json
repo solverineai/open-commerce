@@ -1,0 +1,14 @@
+{
+  "request": {
+    "marketplace_id": "coupang",
+    "category": "example-category",
+    "price": 35000,
+    "currency": "KRW"
+  },
+  "response": {
+    "matches": [],
+    "dataset_status": "starter",
+    "source_references": [],
+    "warnings": ["Starter dataset contains no verified fee rates yet."]
+  }
+}

@@ -1,0 +1,89 @@
+{
+  "schema_version": "0.1.0",
+  "dataset_type": "marketplace",
+  "provider": {
+    "id": "shopify",
+    "name": "Shopify",
+    "category": "commerce_platform",
+    "country_codes": ["US"]
+  },
+  "coverage": {
+    "markets": ["US"],
+    "currency": "USD",
+    "status": "starter"
+  },
+  "fee_structures": [
+    {
+      "id": "platform-and-payment-fees",
+      "name": "Platform and payment fees",
+      "status": "starter",
+      "basis": "Plan, payment provider, and transaction policy",
+      "value": null,
+      "conditions": ["Plan and payment-provider rates require verification."],
+      "source_ref_ids": ["official-provider-docs"],
+      "notes": "Starter placeholder for Shopify merchant economics."
+    }
+  ],
+  "settlement_rules": [
+    {
+      "id": "merchant-payout",
+      "name": "Merchant payout timing",
+      "status": "starter",
+      "basis": "Payment provider and country policy",
+      "value": null,
+      "conditions": ["Payout timing varies by payment setup and market."],
+      "source_ref_ids": ["official-provider-docs"],
+      "notes": "Add source-backed payout timing rules."
+    }
+  ],
+  "shipping_costs": [
+    {
+      "id": "merchant-shipping-cost",
+      "name": "Merchant shipping cost",
+      "status": "starter",
+      "basis": "Merchant shipping configuration and carrier",
+      "value": null,
+      "conditions": ["Carrier-calculated, flat-rate, and free-shipping cases should be separated."],
+      "source_ref_ids": ["official-provider-docs"],
+      "notes": "Add source-backed shipping examples."
+    }
+  ],
+  "return_costs": [
+    {
+      "id": "merchant-return-cost",
+      "name": "Merchant return cost",
+      "status": "starter",
+      "basis": "Merchant return policy and carrier",
+      "value": null,
+      "conditions": ["Return label and restocking rules require merchant policy context."],
+      "source_ref_ids": ["official-provider-docs"],
+      "notes": "Add source-backed return cost examples."
+    }
+  ],
+  "metadata": {
+    "version": "0.1.0",
+    "status": "starter",
+    "license": "Apache-2.0",
+    "last_reviewed": "2026-06-15",
+    "maintainers": ["Solverine"],
+    "ai_usage_notes": "Do not treat starter values as verified economics."
+  },
+  "source_references": [
+    {
+      "id": "official-provider-docs",
+      "title": "Official Shopify merchant economics documentation needed",
+      "publisher": "Shopify",
+      "url": null,
+      "accessed_at": null,
+      "reliability": "unknown",
+      "notes": "Replace with public official source references before marking reviewed."
+    }
+  ],
+  "version_history": [
+    {
+      "version": "0.1.0",
+      "released_at": "2026-06-15",
+      "changes": ["Initial starter economics dataset shell."]
+    }
+  ]
+}

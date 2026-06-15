@@ -1,0 +1,24 @@
+name: Bug report
+description: Report a bug in tools, tests, schemas, examples, or SDK behavior.
+title: "[Bug]: "
+labels: ["help-wanted"]
+body:
+  - type: textarea
+    id: actual
+    attributes:
+      label: What happened?
+      description: Include command output, file path, or payload when possible.
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Reproduction steps
+    validations:
+      required: true

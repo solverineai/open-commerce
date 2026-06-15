@@ -1,0 +1,31 @@
+{
+  "name": "break_even_analysis",
+  "domain": "profitability",
+  "version": "0.1.0",
+  "description": "Calculate break-even unit price from unit costs, variable costs, fixed costs, target profit, and quantity.",
+  "input_schema": {
+    "type": "object",
+    "required": ["unit_product_cost"],
+    "properties": {
+      "unit_product_cost": { "type": "number" },
+      "marketplace_fee": { "type": "number", "default": 0 },
+      "payment_fee": { "type": "number", "default": 0 },
+      "shipping_cost": { "type": "number", "default": 0 },
+      "return_cost": { "type": "number", "default": 0 },
+      "ad_cost": { "type": "number", "default": 0 },
+      "other_costs": { "type": "number", "default": 0 },
+      "fixed_costs": { "type": "number", "default": 0 },
+      "target_profit": { "type": "number", "default": 0 },
+      "quantity": { "type": "integer", "minimum": 1, "default": 1 }
+    }
+  },
+  "output_schema": {
+    "type": "object",
+    "required": ["break_even_unit_price"],
+    "properties": {
+      "break_even_unit_price": { "type": "number" },
+      "assumptions": { "type": "array", "items": { "type": "string" } }
+    }
+  },
+  "agent_compatibility": ["LangGraph", "MCP", "n8n", "OpenAI Codex", "Claude Code"]
+}

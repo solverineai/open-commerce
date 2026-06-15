@@ -1,0 +1,165 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://opencommerce.dev/schemas/marketplace.schema.json",
+  "title": "Open Commerce Marketplace",
+  "description": "Marketplace economics record for fees, settlement rules, shipping costs, return costs, metadata, sources, and version history.",
+  "type": "object",
+  "required": ["schema_version", "marketplace_id", "name", "country_codes", "fee_structures", "settlement_rules", "source_references", "version_history"],
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$"
+    },
+    "marketplace_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1
+    },
+    "country_codes": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string",
+        "minLength": 2,
+        "maxLength": 2
+      }
+    },
+    "channel_type": {
+      "type": "string",
+      "enum": ["marketplace", "storefront", "commerce_platform", "hybrid"]
+    },
+    "fee_structures": {
+      "$ref": "#/$defs/rule_list"
+    },
+    "settlement_rules": {
+      "$ref": "#/$defs/rule_list"
+    },
+    "shipping_costs": {
+      "$ref": "#/$defs/rule_list"
+    },
+    "return_costs": {
+      "$ref": "#/$defs/rule_list"
+    },
+    "metadata": {
+      "type": "object",
+      "additionalProperties": true
+    },
+    "source_references": {
+      "$ref": "#/$defs/source_references"
+    },
+    "version_history": {
+      "$ref": "#/$defs/version_history"
+    },
+    "agent_context": {
+      "$ref": "#/$defs/agent_context"
+    }
+  },
+  "$defs": {
+    "rule_list": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "name", "status", "basis", "source_ref_ids"],
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string",
+            "enum": ["starter", "draft", "reviewed", "stable", "deprecated"]
+          },
+          "basis": {
+            "type": "string"
+          },
+          "value": {
+            "type": ["object", "number", "string", "null"],
+            "additionalProperties": true
+          },
+          "conditions": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "source_ref_ids": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "notes": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "source_references": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["id", "title", "publisher", "reliability"],
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "publisher": {
+            "type": "string"
+          },
+          "url": {
+            "type": ["string", "null"]
+          },
+          "accessed_at": {
+            "type": ["string", "null"]
+          },
+          "reliability": {
+            "type": "string",
+            "enum": ["official", "partner", "community", "inferred", "unknown"]
+          },
+          "notes": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "version_history": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["version", "released_at", "changes"],
+        "additionalProperties": false,
+        "properties": {
+          "version": {
+            "type": "string"
+          },
+          "released_at": {
+            "type": "string"
+          },
+          "changes": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "agent_context": {
+      "type": "object",
+      "additionalProperties": true
+    }
+  }
+}

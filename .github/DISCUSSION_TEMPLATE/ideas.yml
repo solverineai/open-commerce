@@ -1,0 +1,17 @@
+title: "[Idea]: "
+labels: ["help-wanted"]
+body:
+  - type: textarea
+    id: idea
+    attributes:
+      label: Idea
+      description: Describe the Open Commerce idea or proposal.
+    validations:
+      required: true
+  - type: textarea
+    id: fit
+    attributes:
+      label: Project fit
+      description: Explain how this supports standards, datasets, economics, forecasts, or agent infrastructure.
+    validations:
+      required: true

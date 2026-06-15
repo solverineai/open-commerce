@@ -1,0 +1,20 @@
+{
+  "request": {
+    "selling_price": 35000,
+    "product_cost": 17000,
+    "marketplace_fee": 3500,
+    "payment_fee": 900,
+    "shipping_cost": 3200,
+    "ad_cost": 2500,
+    "quantity": 1,
+    "currency": "KRW"
+  },
+  "response": {
+    "gross_revenue": 35000,
+    "total_costs": 27100,
+    "net_profit": 7900,
+    "margin_rate": 0.2257,
+    "roi": 0.2915,
+    "break_even_unit_price": 27100
+  }
+}

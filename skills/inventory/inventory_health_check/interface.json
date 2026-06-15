@@ -1,0 +1,28 @@
+{
+  "name": "inventory_health_check",
+  "domain": "inventory",
+  "version": "0.1.0",
+  "description": "Assess inventory health from stock, reservations, inbound quantity, safety stock, and forecast context.",
+  "input_schema": {
+    "type": "object",
+    "required": ["sku", "quantity_available"],
+    "properties": {
+      "sku": { "type": "string" },
+      "quantity_available": { "type": "integer", "minimum": 0 },
+      "quantity_reserved": { "type": "integer", "minimum": 0, "default": 0 },
+      "quantity_inbound": { "type": "integer", "minimum": 0, "default": 0 },
+      "safety_stock": { "type": "integer", "minimum": 0, "default": 0 },
+      "forecast_values": { "type": "array", "items": { "type": "object" } }
+    }
+  },
+  "output_schema": {
+    "type": "object",
+    "required": ["health_status", "risk_level"],
+    "properties": {
+      "health_status": { "type": "string", "enum": ["healthy", "watch", "at_risk", "unknown"] },
+      "risk_level": { "type": "string", "enum": ["low", "medium", "high", "unknown"] },
+      "recommendations": { "type": "array", "items": { "type": "string" } }
+    }
+  },
+  "agent_compatibility": ["LangGraph", "MCP", "n8n", "OpenAI Codex", "Claude Code"]
+}

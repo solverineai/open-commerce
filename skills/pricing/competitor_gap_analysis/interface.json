@@ -1,0 +1,27 @@
+{
+  "name": "competitor_gap_analysis",
+  "domain": "pricing",
+  "version": "0.1.0",
+  "description": "Analyze price gaps against competitor observations.",
+  "input_schema": {
+    "type": "object",
+    "required": ["sku", "own_price", "competitor_prices"],
+    "properties": {
+      "sku": { "type": "string" },
+      "own_price": { "type": "number" },
+      "currency": { "type": "string", "default": "KRW" },
+      "competitor_prices": { "type": "array", "items": { "type": "object" } },
+      "minimum_margin_rate": { "type": "number" }
+    }
+  },
+  "output_schema": {
+    "type": "object",
+    "required": ["gap_summary", "warnings"],
+    "properties": {
+      "gap_summary": { "type": "object" },
+      "warnings": { "type": "array", "items": { "type": "string" } },
+      "recommendations": { "type": "array", "items": { "type": "string" } }
+    }
+  },
+  "agent_compatibility": ["LangGraph", "MCP", "n8n", "OpenAI Codex", "Claude Code"]
+}

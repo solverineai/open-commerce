@@ -1,0 +1,49 @@
+name: Dataset update
+description: Propose or correct marketplace, logistics, payment, or advertising economics data.
+title: "[Dataset]: "
+labels: ["dataset"]
+body:
+  - type: dropdown
+    id: dataset_type
+    attributes:
+      label: Dataset type
+      options:
+        - marketplace
+        - logistics
+        - payments
+        - advertising
+    validations:
+      required: true
+  - type: input
+    id: provider
+    attributes:
+      label: Provider
+      placeholder: coupang, smartstore, amazon, cj, toss, naver_ads
+    validations:
+      required: true
+  - type: textarea
+    id: change
+    attributes:
+      label: Proposed change
+      description: Describe the fee, settlement, shipping, return, metadata, or source-reference change.
+    validations:
+      required: true
+  - type: textarea
+    id: sources
+    attributes:
+      label: Source references
+      description: Include publisher, title, URL if public, access date, and reliability level.
+    validations:
+      required: true
+  - type: dropdown
+    id: status
+    attributes:
+      label: Proposed dataset status
+      options:
+        - starter
+        - draft
+        - reviewed
+        - stable
+        - deprecated
+    validations:
+      required: true

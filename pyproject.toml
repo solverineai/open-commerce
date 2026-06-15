@@ -1,0 +1,53 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "opencommerce"
+version = "0.1.0"
+description = "Open standard and economic intelligence layer for AI-native commerce."
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "Apache-2.0" }
+authors = [
+  { name = "Solverine" }
+]
+keywords = [
+  "commerce",
+  "marketplace",
+  "profitability",
+  "forecasting",
+  "ai-agents",
+  "open-source"
+]
+classifiers = [
+  "Development Status :: 2 - Pre-Alpha",
+  "Intended Audience :: Developers",
+  "Intended Audience :: Financial and Insurance Industry",
+  "License :: OSI Approved :: Apache Software License",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.9",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Topic :: Office/Business",
+  "Topic :: Software Development :: Libraries :: Python Modules"
+]
+dependencies = []
+
+[project.optional-dependencies]
+dev = [
+  "jsonschema>=4.18"
+]
+
+[project.urls]
+Homepage = "https://github.com/solverine/open-commerce"
+Repository = "https://github.com/solverine/open-commerce"
+Issues = "https://github.com/solverine/open-commerce/issues"
+Discussions = "https://github.com/solverine/open-commerce/discussions"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+opencommerce = ["py.typed"]

@@ -1,0 +1,17 @@
+{
+  "request": {
+    "sku": "SKU-EXAMPLE-001",
+    "quantity_available": 30,
+    "safety_stock": 10,
+    "lead_time_days": 7,
+    "minimum_order_quantity": 20,
+    "forecast_values": [
+      { "period_start": "2026-06-16", "period_end": "2026-06-22", "value": 70 }
+    ]
+  },
+  "response": {
+    "recommended_quantity": 60,
+    "recommendation": "Reorder before lead-time demand consumes available stock.",
+    "assumptions": ["Example only; forecast quality not verified."]
+  }
+}

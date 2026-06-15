@@ -1,0 +1,29 @@
+{
+  "name": "settlement_calculator",
+  "domain": "marketplace",
+  "version": "0.1.0",
+  "description": "Estimate settlement amount and timing from marketplace economics.",
+  "input_schema": {
+    "type": "object",
+    "required": ["marketplace_id", "gross_amount"],
+    "properties": {
+      "marketplace_id": { "type": "string" },
+      "gross_amount": { "type": "number" },
+      "fees": { "type": "array", "items": { "type": "object" } },
+      "refunds": { "type": "number", "default": 0 },
+      "adjustments": { "type": "number", "default": 0 },
+      "currency": { "type": "string", "default": "KRW" }
+    }
+  },
+  "output_schema": {
+    "type": "object",
+    "required": ["expected_settlement_amount", "settlement_timing"],
+    "properties": {
+      "expected_settlement_amount": { "type": "number" },
+      "settlement_timing": { "type": "string" },
+      "deductions": { "type": "array", "items": { "type": "object" } },
+      "warnings": { "type": "array", "items": { "type": "string" } }
+    }
+  },
+  "agent_compatibility": ["LangGraph", "MCP", "n8n", "OpenAI Codex", "Claude Code"]
+}

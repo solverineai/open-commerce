@@ -1,0 +1,89 @@
+{
+  "schema_version": "0.1.0",
+  "dataset_type": "marketplace",
+  "provider": {
+    "id": "amazon",
+    "name": "Amazon",
+    "category": "marketplace",
+    "country_codes": ["US"]
+  },
+  "coverage": {
+    "markets": ["US"],
+    "currency": "USD",
+    "status": "starter"
+  },
+  "fee_structures": [
+    {
+      "id": "referral-fee",
+      "name": "Referral fee",
+      "status": "starter",
+      "basis": "Category and program dependent",
+      "value": null,
+      "conditions": ["Rates require source-backed official documentation."],
+      "source_ref_ids": ["official-provider-docs"],
+      "notes": "Starter placeholder for Amazon referral fee economics."
+    }
+  ],
+  "settlement_rules": [
+    {
+      "id": "seller-settlement",
+      "name": "Seller settlement timing",
+      "status": "starter",
+      "basis": "Marketplace settlement policy",
+      "value": null,
+      "conditions": ["Reserve and disbursement timing require verification."],
+      "source_ref_ids": ["official-provider-docs"],
+      "notes": "Add source-backed payout cycle and reserve rules."
+    }
+  ],
+  "shipping_costs": [
+    {
+      "id": "fulfillment-shipping-cost",
+      "name": "Fulfillment and shipping cost",
+      "status": "starter",
+      "basis": "Fulfillment method, size tier, and destination",
+      "value": null,
+      "conditions": ["FBA and merchant-fulfilled economics should be separated."],
+      "source_ref_ids": ["official-provider-docs"],
+      "notes": "Add source-backed fulfillment cost rules."
+    }
+  ],
+  "return_costs": [
+    {
+      "id": "return-processing-cost",
+      "name": "Return processing cost",
+      "status": "starter",
+      "basis": "Category, fulfillment method, and return reason",
+      "value": null,
+      "conditions": ["Return processing and reimbursement policies require verification."],
+      "source_ref_ids": ["official-provider-docs"],
+      "notes": "Add source-backed return cost rules."
+    }
+  ],
+  "metadata": {
+    "version": "0.1.0",
+    "status": "starter",
+    "license": "Apache-2.0",
+    "last_reviewed": "2026-06-15",
+    "maintainers": ["Solverine"],
+    "ai_usage_notes": "Do not treat starter values as verified economics."
+  },
+  "source_references": [
+    {
+      "id": "official-provider-docs",
+      "title": "Official Amazon seller economics documentation needed",
+      "publisher": "Amazon",
+      "url": null,
+      "accessed_at": null,
+      "reliability": "unknown",
+      "notes": "Replace with public official source references before marking reviewed."
+    }
+  ],
+  "version_history": [
+    {
+      "version": "0.1.0",
+      "released_at": "2026-06-15",
+      "changes": ["Initial starter economics dataset shell."]
+    }
+  ]
+}

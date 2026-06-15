@@ -1,0 +1,89 @@
+{
+  "schema_version": "0.1.0",
+  "dataset_type": "marketplace",
+  "provider": {
+    "id": "gmarket",
+    "name": "Gmarket",
+    "category": "marketplace",
+    "country_codes": ["KR"]
+  },
+  "coverage": {
+    "markets": ["KR"],
+    "currency": "KRW",
+    "status": "starter"
+  },
+  "fee_structures": [
+    {
+      "id": "commission",
+      "name": "Sales commission",
+      "status": "starter",
+      "basis": "Category and seller program dependent",
+      "value": null,
+      "conditions": ["Rates require source-backed official documentation."],
+      "source_ref_ids": ["official-provider-docs"],
+      "notes": "Starter placeholder for Gmarket commission rules."
+    }
+  ],
+  "settlement_rules": [
+    {
+      "id": "seller-settlement",
+      "name": "Seller settlement timing",
+      "status": "starter",
+      "basis": "Marketplace settlement policy",
+      "value": null,
+      "conditions": ["Timing and deduction rules require verification."],
+      "source_ref_ids": ["official-provider-docs"],
+      "notes": "Add payout cycle and settlement deductions."
+    }
+  ],
+  "shipping_costs": [
+    {
+      "id": "seller-shipping-cost",
+      "name": "Seller shipping cost",
+      "status": "starter",
+      "basis": "Seller shipping policy",
+      "value": null,
+      "conditions": ["Shipping policy may vary by seller template."],
+      "source_ref_ids": ["official-provider-docs"],
+      "notes": "Add source-backed shipping rules."
+    }
+  ],
+  "return_costs": [
+    {
+      "id": "return-shipping-cost",
+      "name": "Return shipping cost",
+      "status": "starter",
+      "basis": "Return reason and shipping policy",
+      "value": null,
+      "conditions": ["Return fee responsibility requires verification."],
+      "source_ref_ids": ["official-provider-docs"],
+      "notes": "Add source-backed return cost rules."
+    }
+  ],
+  "metadata": {
+    "version": "0.1.0",
+    "status": "starter",
+    "license": "Apache-2.0",
+    "last_reviewed": "2026-06-15",
+    "maintainers": ["Solverine"],
+    "ai_usage_notes": "Do not treat starter values as verified economics."
+  },
+  "source_references": [
+    {
+      "id": "official-provider-docs",
+      "title": "Official Gmarket seller economics documentation needed",
+      "publisher": "Gmarket",
+      "url": null,
+      "accessed_at": null,
+      "reliability": "unknown",
+      "notes": "Replace with public official source references before marking reviewed."
+    }
+  ],
+  "version_history": [
+    {
+      "version": "0.1.0",
+      "released_at": "2026-06-15",
+      "changes": ["Initial starter economics dataset shell."]
+    }
+  ]
+}

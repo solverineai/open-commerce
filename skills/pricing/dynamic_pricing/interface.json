@@ -1,0 +1,31 @@
+{
+  "name": "dynamic_pricing",
+  "domain": "pricing",
+  "version": "0.1.0",
+  "description": "Recommend a price adjustment with profitability and data-quality guardrails.",
+  "input_schema": {
+    "type": "object",
+    "required": ["sku", "current_price", "minimum_margin_rate"],
+    "properties": {
+      "sku": { "type": "string" },
+      "current_price": { "type": "number" },
+      "minimum_margin_rate": { "type": "number" },
+      "profit_context": { "type": "object" },
+      "inventory_context": { "type": "object" },
+      "forecast_context": { "type": "object" },
+      "competitor_context": { "type": "object" },
+      "currency": { "type": "string", "default": "KRW" }
+    }
+  },
+  "output_schema": {
+    "type": "object",
+    "required": ["recommended_price", "rationale", "guardrails"],
+    "properties": {
+      "recommended_price": { "type": "number" },
+      "rationale": { "type": "array", "items": { "type": "string" } },
+      "guardrails": { "type": "array", "items": { "type": "string" } },
+      "warnings": { "type": "array", "items": { "type": "string" } }
+    }
+  },
+  "agent_compatibility": ["LangGraph", "MCP", "n8n", "OpenAI Codex", "Claude Code"]
+}

@@ -1,0 +1,17 @@
+{
+  "request": {
+    "sku": "SKU-EXAMPLE-001",
+    "quantity_available": 30,
+    "quantity_reserved": 5,
+    "quantity_inbound": 20,
+    "lead_time_days": 7,
+    "forecast_values": [
+      { "period_start": "2026-06-16", "period_end": "2026-06-16", "value": 12 }
+    ]
+  },
+  "response": {
+    "risk_level": "medium",
+    "projected_stockout_date": null,
+    "assumptions": ["Example only; forecast horizon is incomplete."]
+  }
+}

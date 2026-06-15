@@ -1,0 +1,89 @@
+{
+  "schema_version": "0.1.0",
+  "dataset_type": "logistics",
+  "provider": {
+    "id": "hanjin",
+    "name": "Hanjin",
+    "category": "logistics",
+    "country_codes": ["KR"]
+  },
+  "coverage": {
+    "markets": ["KR"],
+    "currency": "KRW",
+    "status": "starter"
+  },
+  "fee_structures": [
+    {
+      "id": "parcel-rate",
+      "name": "Parcel delivery rate",
+      "status": "starter",
+      "basis": "Contract, weight, size, and destination dependent",
+      "value": null,
+      "conditions": ["Rates require source-backed public or contributor-provided non-confidential references."],
+      "source_ref_ids": ["official-provider-docs"],
+      "notes": "Starter placeholder for Hanjin parcel economics."
+    }
+  ],
+  "settlement_rules": [
+    {
+      "id": "carrier-billing",
+      "name": "Carrier billing cycle",
+      "status": "starter",
+      "basis": "Carrier contract and invoicing policy",
+      "value": null,
+      "conditions": ["Billing cycle and surcharge timing require verification."],
+      "source_ref_ids": ["official-provider-docs"],
+      "notes": "Add invoicing and adjustment rules when source-backed."
+    }
+  ],
+  "shipping_costs": [
+    {
+      "id": "domestic-shipping",
+      "name": "Domestic shipping cost",
+      "status": "starter",
+      "basis": "Parcel size, weight, service level, and destination",
+      "value": null,
+      "conditions": ["Remote-area and oversize surcharges should be separate rules."],
+      "source_ref_ids": ["official-provider-docs"],
+      "notes": "Add source-backed domestic shipping bands."
+    }
+  ],
+  "return_costs": [
+    {
+      "id": "return-pickup",
+      "name": "Return pickup cost",
+      "status": "starter",
+      "basis": "Return pickup policy, size, weight, and destination",
+      "value": null,
+      "conditions": ["Return pickup may differ from outbound shipping."],
+      "source_ref_ids": ["official-provider-docs"],
+      "notes": "Add source-backed return pickup costs."
+    }
+  ],
+  "metadata": {
+    "version": "0.1.0",
+    "status": "starter",
+    "license": "Apache-2.0",
+    "last_reviewed": "2026-06-15",
+    "maintainers": ["Solverine"],
+    "ai_usage_notes": "Do not treat starter values as verified economics."
+  },
+  "source_references": [
+    {
+      "id": "official-provider-docs",
+      "title": "Official Hanjin pricing and service documentation needed",
+      "publisher": "Hanjin",
+      "url": null,
+      "accessed_at": null,
+      "reliability": "unknown",
+      "notes": "Replace with public official source references before marking reviewed."
+    }
+  ],
+  "version_history": [
+    {
+      "version": "0.1.0",
+      "released_at": "2026-06-15",
+      "changes": ["Initial starter economics dataset shell."]
+    }
+  ]
+}

@@ -1,0 +1,136 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://opencommerce.dev/schemas/forecast.schema.json",
+  "title": "Open Commerce Forecast",
+  "description": "Forecast record for demand, inventory, margin, and fulfillment planning.",
+  "type": "object",
+  "required": ["schema_version", "forecast_id", "target", "horizon", "generated_at", "values"],
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$"
+    },
+    "forecast_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "target": {
+      "type": "string",
+      "enum": ["demand", "revenue", "profit", "inventory", "stockout_risk", "return_rate"]
+    },
+    "sku": {
+      "type": "string"
+    },
+    "marketplace_id": {
+      "type": "string"
+    },
+    "horizon": {
+      "type": "object",
+      "required": ["start_date", "end_date", "granularity"],
+      "additionalProperties": false,
+      "properties": {
+        "start_date": {
+          "type": "string",
+          "format": "date"
+        },
+        "end_date": {
+          "type": "string",
+          "format": "date"
+        },
+        "granularity": {
+          "type": "string",
+          "enum": ["hour", "day", "week", "month", "quarter"]
+        }
+      }
+    },
+    "generated_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "model": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "version": {
+          "type": "string"
+        },
+        "confidence_method": {
+          "type": "string"
+        }
+      }
+    },
+    "values": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["period_start", "period_end", "value"],
+        "additionalProperties": false,
+        "properties": {
+          "period_start": {
+            "type": "string"
+          },
+          "period_end": {
+            "type": "string"
+          },
+          "value": {
+            "type": "number"
+          },
+          "lower_bound": {
+            "type": "number"
+          },
+          "upper_bound": {
+            "type": "number"
+          },
+          "drivers": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "assumptions": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "agent_context": {
+      "$ref": "#/$defs/agent_context"
+    },
+    "external_refs": {
+      "$ref": "#/$defs/external_refs"
+    }
+  },
+  "$defs": {
+    "agent_context": {
+      "type": "object",
+      "additionalProperties": true
+    },
+    "external_refs": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["system", "id"],
+        "additionalProperties": false,
+        "properties": {
+          "system": {
+            "type": "string"
+          },
+          "id": {
+            "type": "string"
+          },
+          "url": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

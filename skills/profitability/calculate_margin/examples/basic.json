@@ -1,0 +1,10 @@
+{
+  "request": {
+    "revenue": 100000,
+    "total_costs": 76000
+  },
+  "response": {
+    "margin_rate": 0.24,
+    "basis": "revenue_minus_total_costs"
+  }
+}

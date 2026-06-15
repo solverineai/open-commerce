@@ -1,0 +1,28 @@
+{
+  "name": "stockout_prediction",
+  "domain": "forecasting",
+  "version": "0.1.0",
+  "description": "Predict stockout risk from inventory state and demand forecast.",
+  "input_schema": {
+    "type": "object",
+    "required": ["sku", "quantity_available", "forecast_values"],
+    "properties": {
+      "sku": { "type": "string" },
+      "quantity_available": { "type": "integer", "minimum": 0 },
+      "quantity_reserved": { "type": "integer", "minimum": 0, "default": 0 },
+      "quantity_inbound": { "type": "integer", "minimum": 0, "default": 0 },
+      "lead_time_days": { "type": "number", "minimum": 0 },
+      "forecast_values": { "type": "array", "items": { "type": "object" } }
+    }
+  },
+  "output_schema": {
+    "type": "object",
+    "required": ["risk_level", "projected_stockout_date"],
+    "properties": {
+      "risk_level": { "type": "string", "enum": ["low", "medium", "high", "unknown"] },
+      "projected_stockout_date": { "type": ["string", "null"] },
+      "assumptions": { "type": "array", "items": { "type": "string" } }
+    }
+  },
+  "agent_compatibility": ["LangGraph", "MCP", "n8n", "OpenAI Codex", "Claude Code"]
+}

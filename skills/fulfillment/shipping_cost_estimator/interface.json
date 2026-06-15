@@ -1,0 +1,32 @@
+{
+  "name": "shipping_cost_estimator",
+  "domain": "fulfillment",
+  "version": "0.1.0",
+  "description": "Estimate shipping cost from carrier and parcel context.",
+  "input_schema": {
+    "type": "object",
+    "required": ["carrier_id", "destination_market"],
+    "properties": {
+      "carrier_id": { "type": "string" },
+      "origin_market": { "type": "string" },
+      "destination_market": { "type": "string" },
+      "weight_grams": { "type": "number", "minimum": 0 },
+      "length_cm": { "type": "number", "minimum": 0 },
+      "width_cm": { "type": "number", "minimum": 0 },
+      "height_cm": { "type": "number", "minimum": 0 },
+      "service_level": { "type": "string" },
+      "currency": { "type": "string", "default": "KRW" }
+    }
+  },
+  "output_schema": {
+    "type": "object",
+    "required": ["estimated_shipping_cost", "dataset_status"],
+    "properties": {
+      "estimated_shipping_cost": { "type": ["number", "null"] },
+      "dataset_status": { "type": "string" },
+      "matched_rules": { "type": "array", "items": { "type": "object" } },
+      "warnings": { "type": "array", "items": { "type": "string" } }
+    }
+  },
+  "agent_compatibility": ["LangGraph", "MCP", "n8n", "OpenAI Codex", "Claude Code"]
+}

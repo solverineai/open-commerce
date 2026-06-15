@@ -1,0 +1,23 @@
+{
+  "request": {
+    "sku": "SKU-EXAMPLE-001",
+    "marketplace_id": "smartstore",
+    "history": [
+      { "date": "2026-06-01", "units": 12 },
+      { "date": "2026-06-02", "units": 15 }
+    ],
+    "horizon": {
+      "start_date": "2026-06-16",
+      "end_date": "2026-06-22"
+    },
+    "granularity": "day"
+  },
+  "response": {
+    "forecast_id": "forecast-example-001",
+    "target": "demand",
+    "values": [
+      { "period_start": "2026-06-16", "period_end": "2026-06-16", "value": 14 }
+    ],
+    "assumptions": ["Example only; no statistical model applied."]
+  }
+}

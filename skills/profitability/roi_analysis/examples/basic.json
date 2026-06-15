@@ -1,0 +1,11 @@
+{
+  "request": {
+    "profit": 7900,
+    "investment": 27100,
+    "investment_basis": "total_costs"
+  },
+  "response": {
+    "roi": 0.2915,
+    "investment_basis": "total_costs"
+  }
+}

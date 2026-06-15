@@ -1,0 +1,24 @@
+{
+  "name": "calculate_margin",
+  "domain": "profitability",
+  "version": "0.1.0",
+  "description": "Calculate margin rate from revenue and either total costs or profit.",
+  "input_schema": {
+    "type": "object",
+    "required": ["revenue"],
+    "properties": {
+      "revenue": { "type": "number" },
+      "total_costs": { "type": "number" },
+      "profit": { "type": "number" }
+    }
+  },
+  "output_schema": {
+    "type": "object",
+    "required": ["margin_rate"],
+    "properties": {
+      "margin_rate": { "type": "number" },
+      "basis": { "type": "string" }
+    }
+  },
+  "agent_compatibility": ["LangGraph", "MCP", "n8n", "OpenAI Codex", "Claude Code"]
+}

@@ -1,0 +1,43 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    name: Validate repository
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install package
+        run: python -m pip install -e ".[dev]"
+
+      - name: Run unit tests
+        run: python -m unittest discover -s tests -p "test*.py"
+
+      - name: Validate schemas
+        run: python tools/validate_schemas.py
+
+      - name: Validate skills
+        run: python tools/validate_skills.py
+
+      - name: Validate datasets
+        run: python tools/validate_datasets.py
+
+      - name: Lint markdown
+        run: python tools/validate_markdown.py
+
+      - name: Validate contribution setup
+        run: python tools/validate_contribution.py

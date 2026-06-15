@@ -1,0 +1,140 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://opencommerce.dev/schemas/profit.schema.json",
+  "title": "Open Commerce Profit Analysis",
+  "description": "Profitability input and output record for deterministic commerce economics calculations.",
+  "type": "object",
+  "required": ["schema_version", "analysis_id", "inputs", "outputs"],
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$"
+    },
+    "analysis_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "product_id": {
+      "type": "string"
+    },
+    "sku": {
+      "type": "string"
+    },
+    "marketplace_id": {
+      "type": "string"
+    },
+    "inputs": {
+      "type": "object",
+      "required": ["selling_price", "product_cost", "quantity"],
+      "additionalProperties": false,
+      "properties": {
+        "selling_price": {
+          "$ref": "#/$defs/money"
+        },
+        "product_cost": {
+          "$ref": "#/$defs/money"
+        },
+        "marketplace_fee": {
+          "$ref": "#/$defs/money"
+        },
+        "payment_fee": {
+          "$ref": "#/$defs/money"
+        },
+        "shipping_cost": {
+          "$ref": "#/$defs/money"
+        },
+        "return_cost": {
+          "$ref": "#/$defs/money"
+        },
+        "ad_cost": {
+          "$ref": "#/$defs/money"
+        },
+        "other_costs": {
+          "$ref": "#/$defs/money"
+        },
+        "quantity": {
+          "type": "integer",
+          "minimum": 1
+        }
+      }
+    },
+    "outputs": {
+      "type": "object",
+      "required": ["gross_revenue", "total_costs", "net_profit", "margin_rate", "roi", "break_even_unit_price"],
+      "additionalProperties": false,
+      "properties": {
+        "gross_revenue": {
+          "$ref": "#/$defs/money"
+        },
+        "total_costs": {
+          "$ref": "#/$defs/money"
+        },
+        "net_profit": {
+          "$ref": "#/$defs/money"
+        },
+        "margin_rate": {
+          "type": "number"
+        },
+        "roi": {
+          "type": "number"
+        },
+        "break_even_unit_price": {
+          "$ref": "#/$defs/money"
+        }
+      }
+    },
+    "assumptions": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "agent_context": {
+      "$ref": "#/$defs/agent_context"
+    },
+    "external_refs": {
+      "$ref": "#/$defs/external_refs"
+    }
+  },
+  "$defs": {
+    "money": {
+      "type": "object",
+      "required": ["amount", "currency"],
+      "additionalProperties": false,
+      "properties": {
+        "amount": {
+          "type": "number"
+        },
+        "currency": {
+          "type": "string",
+          "minLength": 3,
+          "maxLength": 3
+        }
+      }
+    },
+    "agent_context": {
+      "type": "object",
+      "additionalProperties": true
+    },
+    "external_refs": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["system", "id"],
+        "additionalProperties": false,
+        "properties": {
+          "system": {
+            "type": "string"
+          },
+          "id": {
+            "type": "string"
+          },
+          "url": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

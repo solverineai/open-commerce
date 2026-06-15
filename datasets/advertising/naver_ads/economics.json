@@ -1,0 +1,89 @@
+{
+  "schema_version": "0.1.0",
+  "dataset_type": "advertising",
+  "provider": {
+    "id": "naver_ads",
+    "name": "Naver Ads",
+    "category": "advertising",
+    "country_codes": ["KR"]
+  },
+  "coverage": {
+    "markets": ["KR"],
+    "currency": "KRW",
+    "status": "starter"
+  },
+  "fee_structures": [
+    {
+      "id": "ad-spend-model",
+      "name": "Advertising spend model",
+      "status": "starter",
+      "basis": "Campaign type, bid model, and attributed sales",
+      "value": null,
+      "conditions": ["Pricing, auction, and billing rules require source-backed documentation."],
+      "source_ref_ids": ["official-provider-docs"],
+      "notes": "Starter placeholder for Naver Ads economics."
+    }
+  ],
+  "settlement_rules": [
+    {
+      "id": "ad-billing",
+      "name": "Advertising billing cycle",
+      "status": "starter",
+      "basis": "Ad platform billing policy",
+      "value": null,
+      "conditions": ["Billing threshold and invoice timing require verification."],
+      "source_ref_ids": ["official-provider-docs"],
+      "notes": "Add source-backed billing and deduction rules."
+    }
+  ],
+  "shipping_costs": [
+    {
+      "id": "not-applicable",
+      "name": "Shipping cost not applicable",
+      "status": "starter",
+      "basis": "Advertising economics",
+      "value": null,
+      "conditions": ["Shipping costs are outside advertising scope."],
+      "source_ref_ids": ["official-provider-docs"],
+      "notes": "Kept for common dataset compatibility."
+    }
+  ],
+  "return_costs": [
+    {
+      "id": "return-impact",
+      "name": "Return impact on attributed ads",
+      "status": "starter",
+      "basis": "Attribution and refund policy",
+      "value": null,
+      "conditions": ["Return impact on ad attribution requires verification."],
+      "source_ref_ids": ["official-provider-docs"],
+      "notes": "Add source-backed attribution and refund impact notes."
+    }
+  ],
+  "metadata": {
+    "version": "0.1.0",
+    "status": "starter",
+    "license": "Apache-2.0",
+    "last_reviewed": "2026-06-15",
+    "maintainers": ["Solverine"],
+    "ai_usage_notes": "Do not treat starter values as verified economics."
+  },
+  "source_references": [
+    {
+      "id": "official-provider-docs",
+      "title": "Official Naver Ads pricing and billing documentation needed",
+      "publisher": "Naver",
+      "url": null,
+      "accessed_at": null,
+      "reliability": "unknown",
+      "notes": "Replace with public official source references before marking reviewed."
+    }
+  ],
+  "version_history": [
+    {
+      "version": "0.1.0",
+      "released_at": "2026-06-15",
+      "changes": ["Initial starter economics dataset shell."]
+    }
+  ]
+}

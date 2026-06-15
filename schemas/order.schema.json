@@ -1,0 +1,148 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://opencommerce.dev/schemas/order.schema.json",
+  "title": "Open Commerce Order",
+  "description": "Order economics record without required PII, suitable for AI agent workflows and commerce analysis.",
+  "type": "object",
+  "required": ["schema_version", "order_id", "marketplace_id", "ordered_at", "line_items", "totals"],
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$"
+    },
+    "order_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "marketplace_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "ordered_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "status": {
+      "type": "string",
+      "enum": ["created", "paid", "allocated", "shipped", "delivered", "cancelled", "returned", "refunded"]
+    },
+    "line_items": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["line_item_id", "sku", "quantity", "unit_price"],
+        "additionalProperties": false,
+        "properties": {
+          "line_item_id": {
+            "type": "string"
+          },
+          "product_id": {
+            "type": "string"
+          },
+          "sku": {
+            "type": "string"
+          },
+          "quantity": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "unit_price": {
+            "$ref": "#/$defs/money"
+          },
+          "unit_cost": {
+            "$ref": "#/$defs/money"
+          },
+          "fees": {
+            "$ref": "#/$defs/cost_lines"
+          }
+        }
+      }
+    },
+    "totals": {
+      "type": "object",
+      "required": ["gross_revenue"],
+      "additionalProperties": false,
+      "properties": {
+        "gross_revenue": {
+          "$ref": "#/$defs/money"
+        },
+        "discounts": {
+          "$ref": "#/$defs/money"
+        },
+        "shipping_charged": {
+          "$ref": "#/$defs/money"
+        },
+        "tax": {
+          "$ref": "#/$defs/money"
+        }
+      }
+    },
+    "agent_context": {
+      "$ref": "#/$defs/agent_context"
+    },
+    "external_refs": {
+      "$ref": "#/$defs/external_refs"
+    }
+  },
+  "$defs": {
+    "money": {
+      "type": "object",
+      "required": ["amount", "currency"],
+      "additionalProperties": false,
+      "properties": {
+        "amount": {
+          "type": "number"
+        },
+        "currency": {
+          "type": "string",
+          "minLength": 3,
+          "maxLength": 3
+        }
+      }
+    },
+    "cost_lines": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["type", "amount"],
+        "additionalProperties": false,
+        "properties": {
+          "type": {
+            "type": "string"
+          },
+          "amount": {
+            "$ref": "#/$defs/money"
+          },
+          "source": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "agent_context": {
+      "type": "object",
+      "additionalProperties": true
+    },
+    "external_refs": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["system", "id"],
+        "additionalProperties": false,
+        "properties": {
+          "system": {
+            "type": "string"
+          },
+          "id": {
+            "type": "string"
+          },
+          "url": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

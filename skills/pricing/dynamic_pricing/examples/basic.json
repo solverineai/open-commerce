@@ -1,0 +1,17 @@
+{
+  "request": {
+    "sku": "SKU-EXAMPLE-001",
+    "current_price": 35000,
+    "minimum_margin_rate": 0.2,
+    "profit_context": {
+      "break_even_unit_price": 27100
+    },
+    "currency": "KRW"
+  },
+  "response": {
+    "recommended_price": 35000,
+    "rationale": ["Keep current price because competitor, demand, and inventory data are incomplete."],
+    "guardrails": ["Do not price below break-even plus margin floor."],
+    "warnings": ["Advisory only; no automated price update authorized."]
+  }
+}

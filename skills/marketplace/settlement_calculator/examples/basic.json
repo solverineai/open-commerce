@@ -1,0 +1,22 @@
+{
+  "request": {
+    "marketplace_id": "smartstore",
+    "gross_amount": 35000,
+    "fees": [
+      { "type": "marketplace_fee", "amount": 3500 },
+      { "type": "payment_fee", "amount": 900 }
+    ],
+    "refunds": 0,
+    "adjustments": 0,
+    "currency": "KRW"
+  },
+  "response": {
+    "expected_settlement_amount": 30600,
+    "settlement_timing": "unknown",
+    "deductions": [
+      { "type": "marketplace_fee", "amount": 3500 },
+      { "type": "payment_fee", "amount": 900 }
+    ],
+    "warnings": ["Settlement timing requires reviewed dataset rules."]
+  }
+}

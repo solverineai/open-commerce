@@ -1,0 +1,40 @@
+name: Schema proposal
+description: Propose a JSON Schema change.
+title: "[Schema]: "
+labels: ["schema"]
+body:
+  - type: dropdown
+    id: schema
+    attributes:
+      label: Schema
+      options:
+        - order
+        - inventory
+        - shipment
+        - product
+        - marketplace
+        - profit
+        - forecast
+    validations:
+      required: true
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem
+      description: What agent, workflow, or interoperability problem does this solve?
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposal
+      description: Describe fields, requiredness, compatibility, and examples.
+    validations:
+      required: true
+  - type: textarea
+    id: compatibility
+    attributes:
+      label: Compatibility impact
+      description: Explain downstream or migration impact.
+    validations:
+      required: true

@@ -1,0 +1,29 @@
+{
+  "name": "reorder_recommendation",
+  "domain": "forecasting",
+  "version": "0.1.0",
+  "description": "Recommend reorder quantity and timing from inventory and demand context.",
+  "input_schema": {
+    "type": "object",
+    "required": ["sku", "quantity_available", "forecast_values"],
+    "properties": {
+      "sku": { "type": "string" },
+      "quantity_available": { "type": "integer", "minimum": 0 },
+      "safety_stock": { "type": "integer", "minimum": 0, "default": 0 },
+      "lead_time_days": { "type": "number", "minimum": 0 },
+      "minimum_order_quantity": { "type": "integer", "minimum": 1, "default": 1 },
+      "forecast_values": { "type": "array", "items": { "type": "object" } },
+      "margin_floor": { "type": "number" }
+    }
+  },
+  "output_schema": {
+    "type": "object",
+    "required": ["recommended_quantity", "recommendation"],
+    "properties": {
+      "recommended_quantity": { "type": "integer", "minimum": 0 },
+      "recommendation": { "type": "string" },
+      "assumptions": { "type": "array", "items": { "type": "string" } }
+    }
+  },
+  "agent_compatibility": ["LangGraph", "MCP", "n8n", "OpenAI Codex", "Claude Code"]
+}

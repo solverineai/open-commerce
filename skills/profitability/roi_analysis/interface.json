@@ -1,0 +1,24 @@
+{
+  "name": "roi_analysis",
+  "domain": "profitability",
+  "version": "0.1.0",
+  "description": "Calculate ROI from profit and investment basis.",
+  "input_schema": {
+    "type": "object",
+    "required": ["profit", "investment"],
+    "properties": {
+      "profit": { "type": "number" },
+      "investment": { "type": "number" },
+      "investment_basis": { "type": "string", "default": "total_costs" }
+    }
+  },
+  "output_schema": {
+    "type": "object",
+    "required": ["roi"],
+    "properties": {
+      "roi": { "type": "number" },
+      "investment_basis": { "type": "string" }
+    }
+  },
+  "agent_compatibility": ["LangGraph", "MCP", "n8n", "OpenAI Codex", "Claude Code"]
+}

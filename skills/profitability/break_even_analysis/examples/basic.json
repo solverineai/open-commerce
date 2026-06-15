@@ -1,0 +1,14 @@
+{
+  "request": {
+    "unit_product_cost": 17000,
+    "marketplace_fee": 3500,
+    "payment_fee": 900,
+    "shipping_cost": 3200,
+    "ad_cost": 2500,
+    "quantity": 1
+  },
+  "response": {
+    "break_even_unit_price": 27100,
+    "assumptions": ["All costs are explicit monetary amounts."]
+  }
+}

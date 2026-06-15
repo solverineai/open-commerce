@@ -1,0 +1,111 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://opencommerce.dev/schemas/shipment.schema.json",
+  "title": "Open Commerce Shipment",
+  "description": "Shipment economics and status record for fulfillment analysis and agent workflows.",
+  "type": "object",
+  "required": ["schema_version", "shipment_id", "carrier_id", "status"],
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$"
+    },
+    "shipment_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "order_id": {
+      "type": "string"
+    },
+    "carrier_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "service_level": {
+      "type": "string"
+    },
+    "tracking_number": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string",
+      "enum": ["created", "picked_up", "in_transit", "delivered", "failed", "returned", "cancelled"]
+    },
+    "shipping_cost": {
+      "$ref": "#/$defs/money"
+    },
+    "return_cost": {
+      "$ref": "#/$defs/money"
+    },
+    "events": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["event_type", "occurred_at"],
+        "additionalProperties": false,
+        "properties": {
+          "event_type": {
+            "type": "string"
+          },
+          "occurred_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "location": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "agent_context": {
+      "$ref": "#/$defs/agent_context"
+    },
+    "external_refs": {
+      "$ref": "#/$defs/external_refs"
+    }
+  },
+  "$defs": {
+    "money": {
+      "type": "object",
+      "required": ["amount", "currency"],
+      "additionalProperties": false,
+      "properties": {
+        "amount": {
+          "type": "number"
+        },
+        "currency": {
+          "type": "string",
+          "minLength": 3,
+          "maxLength": 3
+        }
+      }
+    },
+    "agent_context": {
+      "type": "object",
+      "additionalProperties": true
+    },
+    "external_refs": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["system", "id"],
+        "additionalProperties": false,
+        "properties": {
+          "system": {
+            "type": "string"
+          },
+          "id": {
+            "type": "string"
+          },
+          "url": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

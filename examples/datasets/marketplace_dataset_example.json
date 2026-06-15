@@ -1,0 +1,55 @@
+{
+  "schema_version": "0.1.0",
+  "marketplace_id": "example-marketplace",
+  "name": "Example Marketplace",
+  "country_codes": ["KR"],
+  "channel_type": "marketplace",
+  "fee_structures": [
+    {
+      "id": "commission",
+      "name": "Example commission",
+      "status": "starter",
+      "basis": "Category dependent",
+      "value": null,
+      "conditions": ["Replace with source-backed rates."],
+      "source_ref_ids": ["official-docs"],
+      "notes": "Example only."
+    }
+  ],
+  "settlement_rules": [
+    {
+      "id": "settlement-cycle",
+      "name": "Example settlement cycle",
+      "status": "starter",
+      "basis": "Provider policy",
+      "value": null,
+      "conditions": ["Replace with source-backed settlement timing."],
+      "source_ref_ids": ["official-docs"],
+      "notes": "Example only."
+    }
+  ],
+  "shipping_costs": [],
+  "return_costs": [],
+  "metadata": {
+    "status": "starter"
+  },
+  "source_references": [
+    {
+      "id": "official-docs",
+      "title": "Official documentation placeholder",
+      "publisher": "Example Marketplace",
+      "url": null,
+      "accessed_at": null,
+      "reliability": "unknown",
+      "notes": "Example source placeholder."
+    }
+  ],
+  "version_history": [
+    {
+      "version": "0.1.0",
+      "released_at": "2026-06-15",
+      "changes": ["Initial example."]
+    }
+  ],
+  "agent_context": {}
+}

@@ -1,0 +1,89 @@
+{
+  "schema_version": "0.1.0",
+  "dataset_type": "payments",
+  "provider": {
+    "id": "kcp",
+    "name": "KCP",
+    "category": "payments",
+    "country_codes": ["KR"]
+  },
+  "coverage": {
+    "markets": ["KR"],
+    "currency": "KRW",
+    "status": "starter"
+  },
+  "fee_structures": [
+    {
+      "id": "payment-processing-fee",
+      "name": "Payment processing fee",
+      "status": "starter",
+      "basis": "Payment method, merchant contract, and transaction amount",
+      "value": null,
+      "conditions": ["Payment method rates require source-backed official documentation."],
+      "source_ref_ids": ["official-provider-docs"],
+      "notes": "Starter placeholder for KCP processing economics."
+    }
+  ],
+  "settlement_rules": [
+    {
+      "id": "merchant-settlement",
+      "name": "Merchant settlement timing",
+      "status": "starter",
+      "basis": "Payment method and merchant contract",
+      "value": null,
+      "conditions": ["Settlement cycle and reserve rules require verification."],
+      "source_ref_ids": ["official-provider-docs"],
+      "notes": "Add payout timing, cancellation, and refund deduction rules."
+    }
+  ],
+  "shipping_costs": [
+    {
+      "id": "not-applicable",
+      "name": "Shipping cost not applicable",
+      "status": "starter",
+      "basis": "Payment processor economics",
+      "value": null,
+      "conditions": ["Shipping costs are outside payment processing scope."],
+      "source_ref_ids": ["official-provider-docs"],
+      "notes": "Kept for common dataset compatibility."
+    }
+  ],
+  "return_costs": [
+    {
+      "id": "refund-processing-cost",
+      "name": "Refund or cancellation processing cost",
+      "status": "starter",
+      "basis": "Payment method and refund policy",
+      "value": null,
+      "conditions": ["Refund fees and reversals require verification."],
+      "source_ref_ids": ["official-provider-docs"],
+      "notes": "Add source-backed refund economics."
+    }
+  ],
+  "metadata": {
+    "version": "0.1.0",
+    "status": "starter",
+    "license": "Apache-2.0",
+    "last_reviewed": "2026-06-15",
+    "maintainers": ["Solverine"],
+    "ai_usage_notes": "Do not treat starter values as verified economics."
+  },
+  "source_references": [
+    {
+      "id": "official-provider-docs",
+      "title": "Official KCP pricing and settlement documentation needed",
+      "publisher": "KCP",
+      "url": null,
+      "accessed_at": null,
+      "reliability": "unknown",
+      "notes": "Replace with public official source references before marking reviewed."
+    }
+  ],
+  "version_history": [
+    {
+      "version": "0.1.0",
+      "released_at": "2026-06-15",
+      "changes": ["Initial starter economics dataset shell."]
+    }
+  ]
+}

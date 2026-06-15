@@ -1,0 +1,89 @@
+{
+  "schema_version": "0.1.0",
+  "dataset_type": "marketplace",
+  "provider": {
+    "id": "ebay",
+    "name": "eBay",
+    "category": "marketplace",
+    "country_codes": ["US"]
+  },
+  "coverage": {
+    "markets": ["US"],
+    "currency": "USD",
+    "status": "starter"
+  },
+  "fee_structures": [
+    {
+      "id": "final-value-fee",
+      "name": "Final value fee",
+      "status": "starter",
+      "basis": "Category, price, and seller program dependent",
+      "value": null,
+      "conditions": ["Rates require source-backed official documentation."],
+      "source_ref_ids": ["official-provider-docs"],
+      "notes": "Starter placeholder for eBay marketplace fee economics."
+    }
+  ],
+  "settlement_rules": [
+    {
+      "id": "seller-payout",
+      "name": "Seller payout timing",
+      "status": "starter",
+      "basis": "Marketplace payout policy",
+      "value": null,
+      "conditions": ["Payout timing and holds require verification."],
+      "source_ref_ids": ["official-provider-docs"],
+      "notes": "Add source-backed payout cycle and hold rules."
+    }
+  ],
+  "shipping_costs": [
+    {
+      "id": "seller-shipping-cost",
+      "name": "Seller shipping cost",
+      "status": "starter",
+      "basis": "Seller shipping policy and carrier",
+      "value": null,
+      "conditions": ["Carrier, destination, and listing policy may affect costs."],
+      "source_ref_ids": ["official-provider-docs"],
+      "notes": "Add source-backed shipping examples."
+    }
+  ],
+  "return_costs": [
+    {
+      "id": "return-shipping-cost",
+      "name": "Return shipping cost",
+      "status": "starter",
+      "basis": "Return policy and reason",
+      "value": null,
+      "conditions": ["Return responsibility and label costs require verification."],
+      "source_ref_ids": ["official-provider-docs"],
+      "notes": "Add source-backed return cost examples."
+    }
+  ],
+  "metadata": {
+    "version": "0.1.0",
+    "status": "starter",
+    "license": "Apache-2.0",
+    "last_reviewed": "2026-06-15",
+    "maintainers": ["Solverine"],
+    "ai_usage_notes": "Do not treat starter values as verified economics."
+  },
+  "source_references": [
+    {
+      "id": "official-provider-docs",
+      "title": "Official eBay seller economics documentation needed",
+      "publisher": "eBay",
+      "url": null,
+      "accessed_at": null,
+      "reliability": "unknown",
+      "notes": "Replace with public official source references before marking reviewed."
+    }
+  ],
+  "version_history": [
+    {
+      "version": "0.1.0",
+      "released_at": "2026-06-15",
+      "changes": ["Initial starter economics dataset shell."]
+    }
+  ]
+}

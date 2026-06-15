@@ -1,0 +1,70 @@
+{
+  "schema_version": "0.1.0",
+  "analysis_id": "example-profit-001",
+  "product_id": "product-example-001",
+  "sku": "SKU-EXAMPLE-001",
+  "marketplace_id": "coupang",
+  "inputs": {
+    "selling_price": {
+      "amount": 35000,
+      "currency": "KRW"
+    },
+    "product_cost": {
+      "amount": 17000,
+      "currency": "KRW"
+    },
+    "marketplace_fee": {
+      "amount": 3500,
+      "currency": "KRW"
+    },
+    "payment_fee": {
+      "amount": 900,
+      "currency": "KRW"
+    },
+    "shipping_cost": {
+      "amount": 3200,
+      "currency": "KRW"
+    },
+    "return_cost": {
+      "amount": 0,
+      "currency": "KRW"
+    },
+    "ad_cost": {
+      "amount": 2500,
+      "currency": "KRW"
+    },
+    "other_costs": {
+      "amount": 0,
+      "currency": "KRW"
+    },
+    "quantity": 1
+  },
+  "outputs": {
+    "gross_revenue": {
+      "amount": 35000,
+      "currency": "KRW"
+    },
+    "total_costs": {
+      "amount": 27100,
+      "currency": "KRW"
+    },
+    "net_profit": {
+      "amount": 7900,
+      "currency": "KRW"
+    },
+    "margin_rate": 0.2257,
+    "roi": 0.2915,
+    "break_even_unit_price": {
+      "amount": 27100,
+      "currency": "KRW"
+    }
+  },
+  "assumptions": [
+    "Fees are explicit monetary inputs, not dataset-derived rates.",
+    "Starter dataset values are not used as verified economics."
+  ],
+  "agent_context": {
+    "compatible_with": ["LangGraph", "MCP", "n8n", "OpenAI Codex", "Claude Code"]
+  },
+  "external_refs": []
+}

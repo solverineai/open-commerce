@@ -1,0 +1,29 @@
+{
+  "name": "fulfillment_recommendation",
+  "domain": "fulfillment",
+  "version": "0.1.0",
+  "description": "Recommend fulfillment option from inventory, cost, service, and marketplace context.",
+  "input_schema": {
+    "type": "object",
+    "required": ["order_id", "options"],
+    "properties": {
+      "order_id": { "type": "string" },
+      "sku": { "type": "string" },
+      "marketplace_id": { "type": "string" },
+      "promise_date": { "type": "string" },
+      "options": { "type": "array", "items": { "type": "object" } },
+      "constraints": { "type": "array", "items": { "type": "string" } }
+    }
+  },
+  "output_schema": {
+    "type": "object",
+    "required": ["recommendation", "rationale"],
+    "properties": {
+      "recommendation": { "type": "string" },
+      "rationale": { "type": "array", "items": { "type": "string" } },
+      "risks": { "type": "array", "items": { "type": "string" } },
+      "missing_data": { "type": "array", "items": { "type": "string" } }
+    }
+  },
+  "agent_compatibility": ["LangGraph", "MCP", "n8n", "OpenAI Codex", "Claude Code"]
+}
