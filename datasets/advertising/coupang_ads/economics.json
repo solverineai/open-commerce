@@ -5,23 +5,35 @@
     "id": "coupang_ads",
     "name": "Coupang Ads",
     "category": "advertising",
-    "country_codes": ["KR"]
+    "country_codes": [
+      "KR"
+    ]
   },
   "coverage": {
-    "markets": ["KR"],
+    "markets": [
+      "KR"
+    ],
     "currency": "KRW",
-    "status": "starter"
+    "status": "draft"
   },
   "fee_structures": [
     {
-      "id": "ad-spend-model",
-      "name": "Advertising spend model",
-      "status": "starter",
-      "basis": "Campaign type, bid model, and attributed sales",
-      "value": null,
-      "conditions": ["Pricing, auction, and billing rules require source-backed documentation."],
-      "source_ref_ids": ["official-provider-docs"],
-      "notes": "Starter placeholder for Coupang Ads economics."
+      "id": "cpc-ad-spend-model",
+      "name": "Coupang Ads CPC model",
+      "status": "draft",
+      "basis": "Campaign clicks and spend; CPC = ad spend / clicks",
+      "value": {
+        "type": "cpc_model",
+        "formula": "cpc = ad_spend / clicks",
+        "fixed_rate": null
+      },
+      "conditions": [
+        "No fixed platform-wide CPC rate."
+      ],
+      "source_ref_ids": [
+        "coupang-ads-cpc-education"
+      ],
+      "notes": "Official education page explains CPC metric and charging model."
     }
   ],
   "settlement_rules": [
@@ -31,21 +43,29 @@
       "status": "starter",
       "basis": "Ad platform billing policy",
       "value": null,
-      "conditions": ["Billing threshold and invoice timing require verification."],
-      "source_ref_ids": ["official-provider-docs"],
-      "notes": "Add source-backed billing and deduction rules."
+      "conditions": [
+        "Billing-specific source required."
+      ],
+      "source_ref_ids": [
+        "coupang-ads-cpc-education"
+      ],
+      "notes": "Not materialized."
     }
   ],
   "shipping_costs": [
     {
       "id": "not-applicable",
       "name": "Shipping cost not applicable",
-      "status": "starter",
+      "status": "draft",
       "basis": "Advertising economics",
       "value": null,
-      "conditions": ["Shipping costs are outside advertising scope."],
-      "source_ref_ids": ["official-provider-docs"],
-      "notes": "Kept for common dataset compatibility."
+      "conditions": [
+        "Shipping costs are outside advertising scope."
+      ],
+      "source_ref_ids": [
+        "coupang-ads-cpc-education"
+      ],
+      "notes": "Common dataset compatibility placeholder."
     }
   ],
   "return_costs": [
@@ -55,35 +75,53 @@
       "status": "starter",
       "basis": "Attribution and refund policy",
       "value": null,
-      "conditions": ["Return impact on ad attribution requires verification."],
-      "source_ref_ids": ["official-provider-docs"],
-      "notes": "Add source-backed attribution and refund impact notes."
+      "conditions": [
+        "Requires attribution/refund source."
+      ],
+      "source_ref_ids": [
+        "coupang-ads-cpc-education"
+      ],
+      "notes": "Not materialized."
     }
   ],
   "metadata": {
     "version": "0.1.0",
-    "status": "starter",
+    "status": "draft",
     "license": "Apache-2.0",
     "last_reviewed": "2026-06-15",
-    "maintainers": ["Solverine"],
-    "ai_usage_notes": "Do not treat starter values as verified economics."
+    "maintainers": [
+      "Solverine"
+    ],
+    "ai_usage_notes": "Use only rules whose status is reviewed or draft with official source references. Do not infer missing category, settlement, shipping, return, or advertising values.",
+    "verified_scope": "Official Coupang Ads education page confirms CPC calculation model; exact CPC is campaign dependent."
   },
   "source_references": [
     {
-      "id": "official-provider-docs",
-      "title": "Official Coupang Ads pricing and billing documentation needed",
-      "publisher": "Coupang",
-      "url": null,
-      "accessed_at": null,
-      "reliability": "unknown",
-      "notes": "Replace with public official source references before marking reviewed."
+      "id": "coupang-ads-cpc-education",
+      "title": "Coupang Ads CPC education page",
+      "publisher": "Coupang Ads",
+      "url": "https://ads.coupang.com/category/p-live/p-live-ad-edu/p-live-ad-edu-1/",
+      "accessed_at": "2026-06-15",
+      "reliability": "official",
+      "notes": ""
     }
   ],
   "version_history": [
     {
       "version": "0.1.0",
       "released_at": "2026-06-15",
-      "changes": ["Initial starter economics dataset shell."]
+      "changes": [
+        "Initial starter economics dataset shell."
+      ]
+    },
+    {
+      "version": "0.2.0",
+      "released_at": "2026-06-15",
+      "changes": [
+        "Added source-backed verification status and official-source references.",
+        "Materialized representative official values where public sources were confirmed.",
+        "Kept unverified or account-specific values as starter/null to prevent unsafe agent use."
+      ]
     }
   ]
 }

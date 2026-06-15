@@ -5,23 +5,84 @@
     "id": "amazon",
     "name": "Amazon",
     "category": "marketplace",
-    "country_codes": ["US"]
+    "country_codes": [
+      "US"
+    ]
   },
   "coverage": {
-    "markets": ["US"],
+    "markets": [
+      "US"
+    ],
     "currency": "USD",
-    "status": "starter"
+    "status": "draft"
   },
   "fee_structures": [
     {
-      "id": "referral-fee",
-      "name": "Referral fee",
-      "status": "starter",
-      "basis": "Category and program dependent",
-      "value": null,
-      "conditions": ["Rates require source-backed official documentation."],
-      "source_ref_ids": ["official-provider-docs"],
-      "notes": "Starter placeholder for Amazon referral fee economics."
+      "id": "referral-fee-examples",
+      "name": "Amazon referral fee examples",
+      "status": "draft",
+      "basis": "Total sales price by product category; percentage or minimum amount, whichever is greater",
+      "value": {
+        "type": "category_fee_examples",
+        "currency": "USD",
+        "minimum_referral_fee_default": 0.3,
+        "examples": [
+          {
+            "category": "Amazon Device Accessories",
+            "rate": 45.0,
+            "minimum_fee": 0.3
+          },
+          {
+            "category": "Computers",
+            "rate": 8.0,
+            "minimum_fee": 0.3
+          },
+          {
+            "category": "Consumer Electronics",
+            "rate": 8.0,
+            "minimum_fee": 0.3
+          },
+          {
+            "category": "Home and Kitchen",
+            "rate": 15.0,
+            "minimum_fee": 0.3
+          },
+          {
+            "category": "Grocery and Gourmet",
+            "tiers": [
+              {
+                "condition": "price <= 15",
+                "rate": 8.0
+              },
+              {
+                "condition": "price > 15",
+                "rate": 15.0
+              }
+            ]
+          },
+          {
+            "category": "Furniture",
+            "tiers": [
+              {
+                "condition": "price <= 200",
+                "rate": 15.0
+              },
+              {
+                "condition": "price > 200",
+                "rate": 10.0
+              }
+            ],
+            "minimum_fee": 0.3
+          }
+        ]
+      },
+      "conditions": [
+        "US pricing page; marketplace and category must be confirmed before use."
+      ],
+      "source_ref_ids": [
+        "amazon-selling-fees"
+      ],
+      "notes": "Official Amazon examples."
     }
   ],
   "settlement_rules": [
@@ -29,23 +90,31 @@
       "id": "seller-settlement",
       "name": "Seller settlement timing",
       "status": "starter",
-      "basis": "Marketplace settlement policy",
+      "basis": "Amazon settlement policy",
       "value": null,
-      "conditions": ["Reserve and disbursement timing require verification."],
-      "source_ref_ids": ["official-provider-docs"],
-      "notes": "Add source-backed payout cycle and reserve rules."
+      "conditions": [
+        "Settlement timing requires a separate Amazon settlement source."
+      ],
+      "source_ref_ids": [
+        "amazon-selling-fees"
+      ],
+      "notes": "Not verified in fee page."
     }
   ],
   "shipping_costs": [
     {
-      "id": "fulfillment-shipping-cost",
+      "id": "fulfillment-costs",
       "name": "Fulfillment and shipping cost",
       "status": "starter",
-      "basis": "Fulfillment method, size tier, and destination",
+      "basis": "FBA calculator or merchant fulfillment method",
       "value": null,
-      "conditions": ["FBA and merchant-fulfilled economics should be separated."],
-      "source_ref_ids": ["official-provider-docs"],
-      "notes": "Add source-backed fulfillment cost rules."
+      "conditions": [
+        "Use Amazon Revenue Calculator or FBA fee tables for actual fulfillment cost."
+      ],
+      "source_ref_ids": [
+        "amazon-selling-fees"
+      ],
+      "notes": "Fee page links to calculator; no fixed shipping value stored."
     }
   ],
   "return_costs": [
@@ -55,35 +124,53 @@
       "status": "starter",
       "basis": "Category, fulfillment method, and return reason",
       "value": null,
-      "conditions": ["Return processing and reimbursement policies require verification."],
-      "source_ref_ids": ["official-provider-docs"],
-      "notes": "Add source-backed return cost rules."
+      "conditions": [
+        "Requires separate return/FBA fee source."
+      ],
+      "source_ref_ids": [
+        "amazon-selling-fees"
+      ],
+      "notes": "Not verified in fee page."
     }
   ],
   "metadata": {
     "version": "0.1.0",
-    "status": "starter",
+    "status": "draft",
     "license": "Apache-2.0",
     "last_reviewed": "2026-06-15",
-    "maintainers": ["Solverine"],
-    "ai_usage_notes": "Do not treat starter values as verified economics."
+    "maintainers": [
+      "Solverine"
+    ],
+    "ai_usage_notes": "Use only rules whose status is reviewed or draft with official source references. Do not infer missing category, settlement, shipping, return, or advertising values.",
+    "verified_scope": "Official Amazon US referral fee examples and minimum fees. Full category schedule not fully materialized."
   },
   "source_references": [
     {
-      "id": "official-provider-docs",
-      "title": "Official Amazon seller economics documentation needed",
+      "id": "amazon-selling-fees",
+      "title": "Amazon selling fees and referral fee schedule",
       "publisher": "Amazon",
-      "url": null,
-      "accessed_at": null,
-      "reliability": "unknown",
-      "notes": "Replace with public official source references before marking reviewed."
+      "url": "https://sell.amazon.com/pricing",
+      "accessed_at": "2026-06-15",
+      "reliability": "official",
+      "notes": ""
     }
   ],
   "version_history": [
     {
       "version": "0.1.0",
       "released_at": "2026-06-15",
-      "changes": ["Initial starter economics dataset shell."]
+      "changes": [
+        "Initial starter economics dataset shell."
+      ]
+    },
+    {
+      "version": "0.2.0",
+      "released_at": "2026-06-15",
+      "changes": [
+        "Added source-backed verification status and official-source references.",
+        "Materialized representative official values where public sources were confirmed.",
+        "Kept unverified or account-specific values as starter/null to prevent unsafe agent use."
+      ]
     }
   ]
 }

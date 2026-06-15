@@ -5,23 +5,56 @@
     "id": "shopify",
     "name": "Shopify",
     "category": "commerce_platform",
-    "country_codes": ["US"]
+    "country_codes": [
+      "US"
+    ]
   },
   "coverage": {
-    "markets": ["US"],
+    "markets": [
+      "US"
+    ],
     "currency": "USD",
-    "status": "starter"
+    "status": "draft"
   },
   "fee_structures": [
     {
-      "id": "platform-and-payment-fees",
-      "name": "Platform and payment fees",
-      "status": "starter",
-      "basis": "Plan, payment provider, and transaction policy",
-      "value": null,
-      "conditions": ["Plan and payment-provider rates require verification."],
-      "source_ref_ids": ["official-provider-docs"],
-      "notes": "Starter placeholder for Shopify merchant economics."
+      "id": "shopify-payments-location-example",
+      "name": "Shopify Payments online card rate examples",
+      "status": "draft",
+      "basis": "Store location and plan",
+      "value": {
+        "type": "plan_rate_examples",
+        "currency": "JPY",
+        "location_note": "Observed localized official pricing page; prices vary by store location.",
+        "examples": [
+          {
+            "plan": "Basic",
+            "online_card_rate": 3.55,
+            "online_fixed_fee": 0,
+            "third_party_provider_rate": 2.0
+          },
+          {
+            "plan": "Grow",
+            "online_card_rate": 3.4,
+            "online_fixed_fee": 0,
+            "third_party_provider_rate": 1.0
+          },
+          {
+            "plan": "Advanced",
+            "online_card_rate": 3.25,
+            "online_fixed_fee": 0,
+            "third_party_provider_rate": 0.6
+          }
+        ]
+      },
+      "conditions": [
+        "Do not reuse across countries without checking local Shopify pricing."
+      ],
+      "source_ref_ids": [
+        "shopify-payments-pricing",
+        "shopify-fees-help"
+      ],
+      "notes": "Official Shopify page localized during verification."
     }
   ],
   "settlement_rules": [
@@ -29,11 +62,15 @@
       "id": "merchant-payout",
       "name": "Merchant payout timing",
       "status": "starter",
-      "basis": "Payment provider and country policy",
+      "basis": "Shopify Payments country and account policy",
       "value": null,
-      "conditions": ["Payout timing varies by payment setup and market."],
-      "source_ref_ids": ["official-provider-docs"],
-      "notes": "Add source-backed payout timing rules."
+      "conditions": [
+        "Payout timing is account/location specific."
+      ],
+      "source_ref_ids": [
+        "shopify-fees-help"
+      ],
+      "notes": "Not encoded as fixed value."
     }
   ],
   "shipping_costs": [
@@ -43,9 +80,13 @@
       "status": "starter",
       "basis": "Merchant shipping configuration and carrier",
       "value": null,
-      "conditions": ["Carrier-calculated, flat-rate, and free-shipping cases should be separated."],
-      "source_ref_ids": ["official-provider-docs"],
-      "notes": "Add source-backed shipping examples."
+      "conditions": [
+        "Shipping is merchant/carrier/app configured."
+      ],
+      "source_ref_ids": [
+        "shopify-fees-help"
+      ],
+      "notes": "No general platform shipping rate."
     }
   ],
   "return_costs": [
@@ -55,35 +96,62 @@
       "status": "starter",
       "basis": "Merchant return policy and carrier",
       "value": null,
-      "conditions": ["Return label and restocking rules require merchant policy context."],
-      "source_ref_ids": ["official-provider-docs"],
-      "notes": "Add source-backed return cost examples."
+      "conditions": [
+        "Return costs are merchant/carrier configured."
+      ],
+      "source_ref_ids": [
+        "shopify-fees-help"
+      ],
+      "notes": "No general platform return rate."
     }
   ],
   "metadata": {
     "version": "0.1.0",
-    "status": "starter",
+    "status": "draft",
     "license": "Apache-2.0",
     "last_reviewed": "2026-06-15",
-    "maintainers": ["Solverine"],
-    "ai_usage_notes": "Do not treat starter values as verified economics."
+    "maintainers": [
+      "Solverine"
+    ],
+    "ai_usage_notes": "Use only rules whose status is reviewed or draft with official source references. Do not infer missing category, settlement, shipping, return, or advertising values.",
+    "verified_scope": "Official Shopify Payments and third-party provider fee examples. Rates vary by store location and plan."
   },
   "source_references": [
     {
-      "id": "official-provider-docs",
-      "title": "Official Shopify merchant economics documentation needed",
+      "id": "shopify-payments-pricing",
+      "title": "Shopify Payments pricing page",
       "publisher": "Shopify",
-      "url": null,
-      "accessed_at": null,
-      "reliability": "unknown",
-      "notes": "Replace with public official source references before marking reviewed."
+      "url": "https://www.shopify.com/payments",
+      "accessed_at": "2026-06-15",
+      "reliability": "official",
+      "notes": ""
+    },
+    {
+      "id": "shopify-fees-help",
+      "title": "Shopify fees and costs help page",
+      "publisher": "Shopify",
+      "url": "https://help.shopify.com/en/manual/international/pricing/fees",
+      "accessed_at": "2026-06-15",
+      "reliability": "official",
+      "notes": ""
     }
   ],
   "version_history": [
     {
       "version": "0.1.0",
       "released_at": "2026-06-15",
-      "changes": ["Initial starter economics dataset shell."]
+      "changes": [
+        "Initial starter economics dataset shell."
+      ]
+    },
+    {
+      "version": "0.2.0",
+      "released_at": "2026-06-15",
+      "changes": [
+        "Added source-backed verification status and official-source references.",
+        "Materialized representative official values where public sources were confirmed.",
+        "Kept unverified or account-specific values as starter/null to prevent unsafe agent use."
+      ]
     }
   ]
 }

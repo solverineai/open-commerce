@@ -5,23 +5,31 @@
     "id": "11st",
     "name": "11st",
     "category": "marketplace",
-    "country_codes": ["KR"]
+    "country_codes": [
+      "KR"
+    ]
   },
   "coverage": {
-    "markets": ["KR"],
+    "markets": [
+      "KR"
+    ],
     "currency": "KRW",
     "status": "starter"
   },
   "fee_structures": [
     {
-      "id": "commission",
-      "name": "Sales commission",
+      "id": "service-fee",
+      "name": "Category service fee",
       "status": "starter",
-      "basis": "Category and seller program dependent",
+      "basis": "Category service fee policy",
       "value": null,
-      "conditions": ["Rates require source-backed official documentation."],
-      "source_ref_ids": ["official-provider-docs"],
-      "notes": "Starter placeholder for 11st marketplace commission rules."
+      "conditions": [
+        "Exact official rates not stored."
+      ],
+      "source_ref_ids": [
+        "11st-seller-fee-faq"
+      ],
+      "notes": "Do not use for production calculation yet."
     }
   ],
   "settlement_rules": [
@@ -29,11 +37,15 @@
       "id": "seller-settlement",
       "name": "Seller settlement timing",
       "status": "starter",
-      "basis": "Marketplace settlement policy",
+      "basis": "11st settlement policy",
       "value": null,
-      "conditions": ["Timing and deduction rules require verification."],
-      "source_ref_ids": ["official-provider-docs"],
-      "notes": "Add payout cycle and settlement deductions."
+      "conditions": [
+        "Requires official settlement article."
+      ],
+      "source_ref_ids": [
+        "11st-seller-fee-faq"
+      ],
+      "notes": "Not materialized."
     }
   ],
   "shipping_costs": [
@@ -43,9 +55,13 @@
       "status": "starter",
       "basis": "Seller shipping policy",
       "value": null,
-      "conditions": ["Shipping policy may vary by seller template."],
-      "source_ref_ids": ["official-provider-docs"],
-      "notes": "Add source-backed shipping rules."
+      "conditions": [
+        "Seller/carrier dependent."
+      ],
+      "source_ref_ids": [
+        "11st-seller-fee-faq"
+      ],
+      "notes": "No fixed rate."
     }
   ],
   "return_costs": [
@@ -55,9 +71,13 @@
       "status": "starter",
       "basis": "Return reason and shipping policy",
       "value": null,
-      "conditions": ["Return fee responsibility requires verification."],
-      "source_ref_ids": ["official-provider-docs"],
-      "notes": "Add source-backed return cost rules."
+      "conditions": [
+        "Seller/carrier dependent."
+      ],
+      "source_ref_ids": [
+        "11st-seller-fee-faq"
+      ],
+      "notes": "No fixed rate."
     }
   ],
   "metadata": {
@@ -65,25 +85,39 @@
     "status": "starter",
     "license": "Apache-2.0",
     "last_reviewed": "2026-06-15",
-    "maintainers": ["Solverine"],
-    "ai_usage_notes": "Do not treat starter values as verified economics."
+    "maintainers": [
+      "Solverine"
+    ],
+    "ai_usage_notes": "Use only rules whose status is reviewed or draft with official source references. Do not infer missing category, settlement, shipping, return, or advertising values.",
+    "verified_scope": "Official 11st customer center fee topics referenced, but no exact official category table is materialized yet."
   },
   "source_references": [
     {
-      "id": "official-provider-docs",
-      "title": "Official 11st seller economics documentation needed",
+      "id": "11st-seller-fee-faq",
+      "title": "11st seller service-fee FAQ search",
       "publisher": "11st",
-      "url": null,
-      "accessed_at": null,
-      "reliability": "unknown",
-      "notes": "Replace with public official source references before marking reviewed."
+      "url": "https://cs.11st.co.kr/page/seller/faq?search=%EC%84%9C%EB%B9%84%EC%8A%A4%EC%9D%B4%EC%9A%A9%EB%A3%8C",
+      "accessed_at": "2026-06-15",
+      "reliability": "official",
+      "notes": "Official customer center search result for service-fee topics; exact category table still needed."
     }
   ],
   "version_history": [
     {
       "version": "0.1.0",
       "released_at": "2026-06-15",
-      "changes": ["Initial starter economics dataset shell."]
+      "changes": [
+        "Initial starter economics dataset shell."
+      ]
+    },
+    {
+      "version": "0.2.0",
+      "released_at": "2026-06-15",
+      "changes": [
+        "Added source-backed verification status and official-source references.",
+        "Materialized representative official values where public sources were confirmed.",
+        "Kept unverified or account-specific values as starter/null to prevent unsafe agent use."
+      ]
     }
   ]
 }

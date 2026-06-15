@@ -5,23 +5,68 @@
     "id": "lotte",
     "name": "Lotte Global Logistics",
     "category": "logistics",
-    "country_codes": ["KR"]
+    "country_codes": [
+      "KR"
+    ]
   },
   "coverage": {
-    "markets": ["KR"],
+    "markets": [
+      "KR"
+    ],
     "currency": "KRW",
-    "status": "starter"
+    "status": "draft"
   },
   "fee_structures": [
     {
-      "id": "parcel-rate",
-      "name": "Parcel delivery rate",
-      "status": "starter",
-      "basis": "Contract, weight, size, and destination dependent",
-      "value": null,
-      "conditions": ["Rates require source-backed public or contributor-provided non-confidential references."],
-      "source_ref_ids": ["official-provider-docs"],
-      "notes": "Starter placeholder for Lotte Global Logistics parcel economics."
+      "id": "agency-parcel-rate-table",
+      "name": "Agency parcel rate examples",
+      "status": "draft",
+      "basis": "Agency parcel size, weight, and delivery zone",
+      "value": {
+        "type": "rate_table",
+        "currency": "KRW",
+        "rows": [
+          {
+            "size": "extra_small",
+            "weight_kg": 2,
+            "sum_cm": 60,
+            "same_zone": 5000,
+            "other_zone": 6000,
+            "jeju": 8500
+          },
+          {
+            "size": "small",
+            "weight_kg": 10,
+            "sum_cm": 120,
+            "same_zone": 6000,
+            "other_zone": 7000,
+            "jeju": 9500
+          },
+          {
+            "size": "medium",
+            "weight_kg": 20,
+            "sum_cm": 140,
+            "same_zone": 7000,
+            "other_zone": 8000,
+            "jeju": 10500
+          },
+          {
+            "size": "large",
+            "weight_kg": 30,
+            "sum_cm": 160,
+            "same_zone": 8000,
+            "other_zone": 9000,
+            "jeju": 11500
+          }
+        ]
+      },
+      "conditions": [
+        "Agency parcel service only; corporate contract rates may differ."
+      ],
+      "source_ref_ids": [
+        "lotte-agency-parcel-rates"
+      ],
+      "notes": "Official rate table examples."
     }
   ],
   "settlement_rules": [
@@ -31,21 +76,31 @@
       "status": "starter",
       "basis": "Carrier contract and invoicing policy",
       "value": null,
-      "conditions": ["Billing cycle and surcharge timing require verification."],
-      "source_ref_ids": ["official-provider-docs"],
-      "notes": "Add invoicing and adjustment rules when source-backed."
+      "conditions": [
+        "Contract-specific."
+      ],
+      "source_ref_ids": [
+        "lotte-agency-parcel-rates"
+      ],
+      "notes": "Not verified."
     }
   ],
   "shipping_costs": [
     {
       "id": "domestic-shipping",
       "name": "Domestic shipping cost",
-      "status": "starter",
-      "basis": "Parcel size, weight, service level, and destination",
-      "value": null,
-      "conditions": ["Remote-area and oversize surcharges should be separate rules."],
-      "source_ref_ids": ["official-provider-docs"],
-      "notes": "Add source-backed domestic shipping bands."
+      "status": "draft",
+      "basis": "Agency parcel size, weight, and zone",
+      "value": {
+        "type": "rate_table_reference"
+      },
+      "conditions": [
+        "Agency parcel service only."
+      ],
+      "source_ref_ids": [
+        "lotte-agency-parcel-rates"
+      ],
+      "notes": "Official rate source."
     }
   ],
   "return_costs": [
@@ -53,37 +108,55 @@
       "id": "return-pickup",
       "name": "Return pickup cost",
       "status": "starter",
-      "basis": "Return pickup policy, size, weight, and destination",
+      "basis": "Return pickup policy and contract",
       "value": null,
-      "conditions": ["Return pickup may differ from outbound shipping."],
-      "source_ref_ids": ["official-provider-docs"],
-      "notes": "Add source-backed return pickup costs."
+      "conditions": [
+        "Return pickup may differ from outbound shipping."
+      ],
+      "source_ref_ids": [
+        "lotte-agency-parcel-rates"
+      ],
+      "notes": "Not verified."
     }
   ],
   "metadata": {
     "version": "0.1.0",
-    "status": "starter",
+    "status": "draft",
     "license": "Apache-2.0",
     "last_reviewed": "2026-06-15",
-    "maintainers": ["Solverine"],
-    "ai_usage_notes": "Do not treat starter values as verified economics."
+    "maintainers": [
+      "Solverine"
+    ],
+    "ai_usage_notes": "Use only rules whose status is reviewed or draft with official source references. Do not infer missing category, settlement, shipping, return, or advertising values.",
+    "verified_scope": "Official Lotte agency parcel public tariff examples."
   },
   "source_references": [
     {
-      "id": "official-provider-docs",
-      "title": "Official Lotte Global Logistics pricing and service documentation needed",
+      "id": "lotte-agency-parcel-rates",
+      "title": "Lotte Global Logistics agency parcel rates",
       "publisher": "Lotte Global Logistics",
-      "url": null,
-      "accessed_at": null,
-      "reliability": "unknown",
-      "notes": "Replace with public official source references before marking reviewed."
+      "url": "https://www.lotteglogis.com/home/business/parcel/agency",
+      "accessed_at": "2026-06-15",
+      "reliability": "official",
+      "notes": ""
     }
   ],
   "version_history": [
     {
       "version": "0.1.0",
       "released_at": "2026-06-15",
-      "changes": ["Initial starter economics dataset shell."]
+      "changes": [
+        "Initial starter economics dataset shell."
+      ]
+    },
+    {
+      "version": "0.2.0",
+      "released_at": "2026-06-15",
+      "changes": [
+        "Added source-backed verification status and official-source references.",
+        "Materialized representative official values where public sources were confirmed.",
+        "Kept unverified or account-specific values as starter/null to prevent unsafe agent use."
+      ]
     }
   ]
 }

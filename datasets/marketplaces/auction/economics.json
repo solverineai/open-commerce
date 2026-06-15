@@ -5,23 +5,57 @@
     "id": "auction",
     "name": "Auction",
     "category": "marketplace",
-    "country_codes": ["KR"]
+    "country_codes": [
+      "KR"
+    ]
   },
   "coverage": {
-    "markets": ["KR"],
+    "markets": [
+      "KR"
+    ],
     "currency": "KRW",
-    "status": "starter"
+    "status": "draft"
   },
   "fee_structures": [
     {
-      "id": "commission",
-      "name": "Sales commission",
-      "status": "starter",
-      "basis": "Category and seller program dependent",
-      "value": null,
-      "conditions": ["Rates require source-backed official documentation."],
-      "source_ref_ids": ["official-provider-docs"],
-      "notes": "Starter placeholder for Auction commission rules."
+      "id": "open-market-service-fee-range",
+      "name": "Open-market category service fee range",
+      "status": "draft",
+      "basis": "Per-item sale amount by category",
+      "value": {
+        "type": "percentage_range",
+        "unit": "percent",
+        "min": 1.0,
+        "max": 12.0,
+        "formula": "(sale_price + option_amount_or_add_on_amount) * category_service_fee + prepaid_shipping_fee * 3.3%"
+      },
+      "conditions": [
+        "Category-specific rates must be resolved from the linked category fee table."
+      ],
+      "source_ref_ids": [
+        "esmplus-seller-guide-fees",
+        "gmarket-service-fee-popup"
+      ],
+      "notes": "Official guide states category rates vary from 1% to 12% and prepaid shipping is charged at 3.3%."
+    },
+    {
+      "id": "server-use-fee",
+      "name": "Server use fee",
+      "status": "draft",
+      "basis": "Prior-month merchandise sales by seller ID",
+      "value": {
+        "type": "fixed_monthly_fee",
+        "currency": "KRW",
+        "amount": 55000,
+        "condition": "Prior-month merchandise sales >= 5,000,000 KRW by seller ID"
+      },
+      "conditions": [
+        "Applies to Gmarket seller IDs per source; confirm Auction applicability separately."
+      ],
+      "source_ref_ids": [
+        "gmarket-service-fee-popup"
+      ],
+      "notes": "Official popup states monthly server fee threshold and amount."
     }
   ],
   "settlement_rules": [
@@ -29,61 +63,101 @@
       "id": "seller-settlement",
       "name": "Seller settlement timing",
       "status": "starter",
-      "basis": "Marketplace settlement policy",
+      "basis": "ESM settlement policy",
       "value": null,
-      "conditions": ["Timing and deduction rules require verification."],
-      "source_ref_ids": ["official-provider-docs"],
-      "notes": "Add payout cycle and settlement deductions."
+      "conditions": [
+        "Exact payout timing needs a focused settlement source."
+      ],
+      "source_ref_ids": [
+        "esmplus-seller-guide-fees"
+      ],
+      "notes": "Fee formula source does not fully verify payout timing."
     }
   ],
   "shipping_costs": [
     {
-      "id": "seller-shipping-cost",
-      "name": "Seller shipping cost",
-      "status": "starter",
-      "basis": "Seller shipping policy",
-      "value": null,
-      "conditions": ["Shipping policy may vary by seller template."],
-      "source_ref_ids": ["official-provider-docs"],
-      "notes": "Add source-backed shipping rules."
+      "id": "prepaid-shipping-fee-surcharge",
+      "name": "Prepaid shipping fee service charge",
+      "status": "draft",
+      "basis": "Prepaid shipping fee through platform",
+      "value": {
+        "type": "percentage",
+        "unit": "percent",
+        "rate": 3.3
+      },
+      "conditions": [
+        "Free shipping and collect-on-delivery are excluded by the source."
+      ],
+      "source_ref_ids": [
+        "esmplus-seller-guide-fees",
+        "gmarket-service-fee-popup"
+      ],
+      "notes": "Official ESM formula includes prepaid shipping fee times 3.3%."
     }
   ],
   "return_costs": [
     {
-      "id": "return-shipping-cost",
+      "id": "return-cost",
       "name": "Return shipping cost",
       "status": "starter",
-      "basis": "Return reason and shipping policy",
+      "basis": "Return reason and carrier contract",
       "value": null,
-      "conditions": ["Return fee responsibility requires verification."],
-      "source_ref_ids": ["official-provider-docs"],
-      "notes": "Add source-backed return cost rules."
+      "conditions": [
+        "Return shipping cost needs separate official table or carrier contract."
+      ],
+      "source_ref_ids": [
+        "esmplus-seller-guide-fees"
+      ],
+      "notes": "Not verified in the fee source."
     }
   ],
   "metadata": {
     "version": "0.1.0",
-    "status": "starter",
+    "status": "draft",
     "license": "Apache-2.0",
     "last_reviewed": "2026-06-15",
-    "maintainers": ["Solverine"],
-    "ai_usage_notes": "Do not treat starter values as verified economics."
+    "maintainers": [
+      "Solverine"
+    ],
+    "ai_usage_notes": "Use only rules whose status is reviewed or draft with official source references. Do not infer missing category, settlement, shipping, return, or advertising values.",
+    "verified_scope": "Official ESM Plus service-fee formula and range. Full category table is referenced but not materialized."
   },
   "source_references": [
     {
-      "id": "official-provider-docs",
-      "title": "Official Auction seller economics documentation needed",
-      "publisher": "Auction",
-      "url": null,
-      "accessed_at": null,
-      "reliability": "unknown",
-      "notes": "Replace with public official source references before marking reviewed."
+      "id": "esmplus-seller-guide-fees",
+      "title": "ESM Plus seller guide: deposit and settlement fees",
+      "publisher": "ESM Plus",
+      "url": "https://pics.esmplus.com/front/manual/sellerguide2/depositSettlement.html",
+      "accessed_at": "2026-06-15",
+      "reliability": "official",
+      "notes": "Official seller guide covering Auction and Gmarket service-fee formula."
+    },
+    {
+      "id": "gmarket-service-fee-popup",
+      "title": "Gmarket service fee popup",
+      "publisher": "ESM Plus",
+      "url": "https://www.esmplus.com/commonpopup/gmarketusecost",
+      "accessed_at": "2026-06-15",
+      "reliability": "official",
+      "notes": "Official Gmarket service fee popup; included for shared ESM fee formula and server fee details."
     }
   ],
   "version_history": [
     {
       "version": "0.1.0",
       "released_at": "2026-06-15",
-      "changes": ["Initial starter economics dataset shell."]
+      "changes": [
+        "Initial starter economics dataset shell."
+      ]
+    },
+    {
+      "version": "0.2.0",
+      "released_at": "2026-06-15",
+      "changes": [
+        "Added source-backed verification status and official-source references.",
+        "Materialized representative official values where public sources were confirmed.",
+        "Kept unverified or account-specific values as starter/null to prevent unsafe agent use."
+      ]
     }
   ]
 }

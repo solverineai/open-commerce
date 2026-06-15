@@ -5,85 +5,193 @@
     "id": "cafe24",
     "name": "Cafe24",
     "category": "commerce_platform",
-    "country_codes": ["KR"]
+    "country_codes": [
+      "KR"
+    ]
   },
   "coverage": {
-    "markets": ["KR"],
+    "markets": [
+      "KR"
+    ],
     "currency": "KRW",
-    "status": "starter"
+    "status": "draft"
   },
   "fee_structures": [
     {
-      "id": "platform-fees",
-      "name": "Platform and service fees",
-      "status": "starter",
-      "basis": "Plan, service, and app dependent",
-      "value": null,
-      "conditions": ["Plan-specific and optional service fees require verification."],
-      "source_ref_ids": ["official-provider-docs"],
-      "notes": "Starter placeholder for Cafe24 platform economics."
+      "id": "cafe24-pro-service-fees",
+      "name": "Cafe24 PRO service fees",
+      "status": "draft",
+      "basis": "Paid amount excluding shipping; VAT excluded",
+      "value": {
+        "type": "percentage_examples",
+        "unit": "percent",
+        "examples": [
+          {
+            "service": "owned_store",
+            "rate": 2.0
+          },
+          {
+            "service": "b2b",
+            "rate": 1.0
+          },
+          {
+            "service": "market",
+            "rate": 1.0
+          }
+        ]
+      },
+      "conditions": [
+        "Applies to Cafe24 PRO service, not all Cafe24 stores."
+      ],
+      "source_ref_ids": [
+        "cafe24-pro-service-fees"
+      ],
+      "notes": "Official Cafe24 PRO rates."
+    },
+    {
+      "id": "cafe24-payments-fees",
+      "name": "Cafe24 Payments fee examples",
+      "status": "draft",
+      "basis": "Payment method and merchant annual sales band",
+      "value": {
+        "type": "payment_fee_examples",
+        "currency": "KRW",
+        "examples": [
+          {
+            "method": "card",
+            "rate_min": 2.0,
+            "rate_max": 3.5,
+            "unit": "percent"
+          },
+          {
+            "method": "simple_payment",
+            "rate_min": 2.0,
+            "rate_max": 3.5,
+            "unit": "percent"
+          },
+          {
+            "method": "bank_transfer",
+            "rate": 1.8,
+            "unit": "percent",
+            "minimum_fee": 200
+          },
+          {
+            "method": "virtual_account",
+            "fixed_fee": 300
+          },
+          {
+            "method": "escrow_bank_transfer_or_virtual_account",
+            "fixed_fee": 0
+          }
+        ]
+      },
+      "conditions": [
+        "PG-specific contracts can differ."
+      ],
+      "source_ref_ids": [
+        "cafe24-payments-fees"
+      ],
+      "notes": "Official Cafe24 Payments fee guide."
     }
   ],
   "settlement_rules": [
     {
-      "id": "merchant-settlement",
-      "name": "Merchant settlement timing",
-      "status": "starter",
-      "basis": "Payment provider and platform policy",
-      "value": null,
-      "conditions": ["Settlement may depend on configured payment provider."],
-      "source_ref_ids": ["official-provider-docs"],
-      "notes": "Add source-backed payout and deduction rules."
+      "id": "cafe24-pro-settlement",
+      "name": "Cafe24 PRO settlement handling",
+      "status": "draft",
+      "basis": "PG settlement cycle and service fee deduction",
+      "value": {
+        "type": "policy_note",
+        "note": "Service fees are deducted from settlement according to PG cycle."
+      },
+      "conditions": [
+        "Exact payout timing depends on PG provider."
+      ],
+      "source_ref_ids": [
+        "cafe24-pro-service-fees"
+      ],
+      "notes": "Source states settlement follows PG settlement cycle."
     }
   ],
   "shipping_costs": [
     {
-      "id": "seller-shipping-cost",
-      "name": "Seller shipping cost",
+      "id": "merchant-shipping-cost",
+      "name": "Merchant shipping cost",
       "status": "starter",
-      "basis": "Merchant shipping configuration",
+      "basis": "Merchant shipping configuration and carrier",
       "value": null,
-      "conditions": ["Shipping is generally merchant configured and carrier dependent."],
-      "source_ref_ids": ["official-provider-docs"],
-      "notes": "Add template examples for carrier-linked shipping."
+      "conditions": [
+        "Shipping costs are merchant/carrier configured."
+      ],
+      "source_ref_ids": [
+        "cafe24-pro-service-fees"
+      ],
+      "notes": "No general Cafe24 platform shipping rate is verified."
     }
   ],
   "return_costs": [
     {
-      "id": "return-shipping-cost",
-      "name": "Return shipping cost",
+      "id": "merchant-return-cost",
+      "name": "Merchant return cost",
       "status": "starter",
-      "basis": "Merchant return policy",
+      "basis": "Merchant return policy and carrier",
       "value": null,
-      "conditions": ["Return rules are merchant and carrier dependent."],
-      "source_ref_ids": ["official-provider-docs"],
-      "notes": "Add source-backed return cost guidance."
+      "conditions": [
+        "Return costs are merchant/carrier configured."
+      ],
+      "source_ref_ids": [
+        "cafe24-pro-service-fees"
+      ],
+      "notes": "No general Cafe24 return cost is verified."
     }
   ],
   "metadata": {
     "version": "0.1.0",
-    "status": "starter",
+    "status": "draft",
     "license": "Apache-2.0",
     "last_reviewed": "2026-06-15",
-    "maintainers": ["Solverine"],
-    "ai_usage_notes": "Do not treat starter values as verified economics."
+    "maintainers": [
+      "Solverine"
+    ],
+    "ai_usage_notes": "Use only rules whose status is reviewed or draft with official source references. Do not infer missing category, settlement, shipping, return, or advertising values.",
+    "verified_scope": "Official Cafe24 PRO service fees and Cafe24 Payments fee ranges. Merchant-specific PG contracts may differ."
   },
   "source_references": [
     {
-      "id": "official-provider-docs",
-      "title": "Official Cafe24 platform economics documentation needed",
+      "id": "cafe24-pro-service-fees",
+      "title": "Cafe24 PRO service fee and settlement guide",
       "publisher": "Cafe24",
-      "url": null,
-      "accessed_at": null,
-      "reliability": "unknown",
-      "notes": "Replace with public official source references before marking reviewed."
+      "url": "https://support.cafe24.com/hc/ko/articles/47357983346969-%EC%84%9C%EB%B9%84%EC%8A%A4-%EC%88%98%EC%88%98%EB%A3%8C-%EB%B0%8F-%EC%A0%95%EC%82%B0-%EC%95%88%EB%82%B4",
+      "accessed_at": "2026-06-15",
+      "reliability": "official",
+      "notes": ""
+    },
+    {
+      "id": "cafe24-payments-fees",
+      "title": "Cafe24 Payments fee guide",
+      "publisher": "Cafe24",
+      "url": "https://support.cafe24.com/hc/ko/articles/21539249921561--%EC%A0%95%EC%82%B0-%EC%B9%B4%ED%8E%9824%ED%8E%98%EC%9D%B4%EB%A8%BC%EC%B8%A0-%EC%88%98%EC%88%98%EB%A3%8C%EB%8A%94-%EC%96%B4%EB%96%BB%EA%B2%8C-%EB%90%98%EB%82%98%EC%9A%94",
+      "accessed_at": "2026-06-15",
+      "reliability": "official",
+      "notes": ""
     }
   ],
   "version_history": [
     {
       "version": "0.1.0",
       "released_at": "2026-06-15",
-      "changes": ["Initial starter economics dataset shell."]
+      "changes": [
+        "Initial starter economics dataset shell."
+      ]
+    },
+    {
+      "version": "0.2.0",
+      "released_at": "2026-06-15",
+      "changes": [
+        "Added source-backed verification status and official-source references.",
+        "Materialized representative official values where public sources were confirmed.",
+        "Kept unverified or account-specific values as starter/null to prevent unsafe agent use."
+      ]
     }
   ]
 }

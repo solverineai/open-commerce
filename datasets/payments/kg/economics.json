@@ -5,23 +5,77 @@
     "id": "kg",
     "name": "KG Inicis",
     "category": "payments",
-    "country_codes": ["KR"]
+    "country_codes": [
+      "KR"
+    ]
   },
   "coverage": {
-    "markets": ["KR"],
+    "markets": [
+      "KR"
+    ],
     "currency": "KRW",
-    "status": "starter"
+    "status": "draft"
   },
   "fee_structures": [
     {
-      "id": "payment-processing-fee",
-      "name": "Payment processing fee",
-      "status": "starter",
-      "basis": "Payment method, merchant contract, and transaction amount",
-      "value": null,
-      "conditions": ["Payment method rates require source-backed official documentation."],
-      "source_ref_ids": ["official-provider-docs"],
-      "notes": "Starter placeholder for KG Inicis processing economics."
+      "id": "payment-processing-fees",
+      "name": "Payment processing fees",
+      "status": "draft",
+      "basis": "Payment method; VAT excluded; merchant can differ",
+      "value": {
+        "type": "payment_fee_table",
+        "currency": "KRW",
+        "examples": [
+          {
+            "method": "credit_card",
+            "rate_min": 3.0,
+            "rate_max": 3.5
+          },
+          {
+            "method": "bank_transfer",
+            "rate_min": 1.8,
+            "rate_max": 2.0,
+            "minimum_fee": 200
+          },
+          {
+            "method": "virtual_account",
+            "fixed_fee": 300
+          },
+          {
+            "method": "mobile_physical_goods",
+            "rate": 3.5
+          },
+          {
+            "method": "mobile_content",
+            "rate": 7.0
+          },
+          {
+            "method": "simple_payment_group_1",
+            "rate_min": 3.0,
+            "rate_max": 3.5
+          },
+          {
+            "method": "simple_payment_group_2",
+            "rate_min": 3.3,
+            "rate_max": 3.5
+          },
+          {
+            "method": "apple_pay",
+            "rate": 3.5
+          },
+          {
+            "method": "gift_certificate",
+            "rate": 11.0
+          }
+        ]
+      },
+      "conditions": [
+        "VAT excluded; overseas card and global payments require separate agreement."
+      ],
+      "source_ref_ids": [
+        "kg-inicis-payment-method-fees"
+      ],
+      "notes": "Official KG Inicis table."
     }
   ],
   "settlement_rules": [
@@ -31,21 +85,29 @@
       "status": "starter",
       "basis": "Payment method and merchant contract",
       "value": null,
-      "conditions": ["Settlement cycle and reserve rules require verification."],
-      "source_ref_ids": ["official-provider-docs"],
-      "notes": "Add payout timing, cancellation, and refund deduction rules."
+      "conditions": [
+        "Requires separate settlement source or contract."
+      ],
+      "source_ref_ids": [
+        "kg-inicis-payment-method-fees"
+      ],
+      "notes": "Not materialized."
     }
   ],
   "shipping_costs": [
     {
       "id": "not-applicable",
       "name": "Shipping cost not applicable",
-      "status": "starter",
+      "status": "draft",
       "basis": "Payment processor economics",
       "value": null,
-      "conditions": ["Shipping costs are outside payment processing scope."],
-      "source_ref_ids": ["official-provider-docs"],
-      "notes": "Kept for common dataset compatibility."
+      "conditions": [
+        "Shipping costs are outside payment processing scope."
+      ],
+      "source_ref_ids": [
+        "kg-inicis-payment-method-fees"
+      ],
+      "notes": "Common dataset compatibility placeholder."
     }
   ],
   "return_costs": [
@@ -55,35 +117,53 @@
       "status": "starter",
       "basis": "Payment method and refund policy",
       "value": null,
-      "conditions": ["Refund fees and reversals require verification."],
-      "source_ref_ids": ["official-provider-docs"],
-      "notes": "Add source-backed refund economics."
+      "conditions": [
+        "Refund fee behavior requires a dedicated source."
+      ],
+      "source_ref_ids": [
+        "kg-inicis-payment-method-fees"
+      ],
+      "notes": "Not materialized."
     }
   ],
   "metadata": {
     "version": "0.1.0",
-    "status": "starter",
+    "status": "draft",
     "license": "Apache-2.0",
     "last_reviewed": "2026-06-15",
-    "maintainers": ["Solverine"],
-    "ai_usage_notes": "Do not treat starter values as verified economics."
+    "maintainers": [
+      "Solverine"
+    ],
+    "ai_usage_notes": "Use only rules whose status is reviewed or draft with official source references. Do not infer missing category, settlement, shipping, return, or advertising values.",
+    "verified_scope": "Official KG Inicis payment-method fee table."
   },
   "source_references": [
     {
-      "id": "official-provider-docs",
-      "title": "Official KG Inicis pricing and settlement documentation needed",
+      "id": "kg-inicis-payment-method-fees",
+      "title": "KG Inicis payment method fees",
       "publisher": "KG Inicis",
-      "url": null,
-      "accessed_at": null,
-      "reliability": "unknown",
-      "notes": "Replace with public official source references before marking reviewed."
+      "url": "https://www.inicis.com/pg-method",
+      "accessed_at": "2026-06-15",
+      "reliability": "official",
+      "notes": ""
     }
   ],
   "version_history": [
     {
       "version": "0.1.0",
       "released_at": "2026-06-15",
-      "changes": ["Initial starter economics dataset shell."]
+      "changes": [
+        "Initial starter economics dataset shell."
+      ]
+    },
+    {
+      "version": "0.2.0",
+      "released_at": "2026-06-15",
+      "changes": [
+        "Added source-backed verification status and official-source references.",
+        "Materialized representative official values where public sources were confirmed.",
+        "Kept unverified or account-specific values as starter/null to prevent unsafe agent use."
+      ]
     }
   ]
 }

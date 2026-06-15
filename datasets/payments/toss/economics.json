@@ -5,47 +5,105 @@
     "id": "toss",
     "name": "Toss Payments",
     "category": "payments",
-    "country_codes": ["KR"]
+    "country_codes": [
+      "KR"
+    ]
   },
   "coverage": {
-    "markets": ["KR"],
+    "markets": [
+      "KR"
+    ],
     "currency": "KRW",
-    "status": "starter"
+    "status": "draft"
   },
   "fee_structures": [
     {
-      "id": "payment-processing-fee",
-      "name": "Payment processing fee",
-      "status": "starter",
-      "basis": "Payment method, merchant contract, and transaction amount",
-      "value": null,
-      "conditions": ["Payment method rates require source-backed official documentation."],
-      "source_ref_ids": ["official-provider-docs"],
-      "notes": "Starter placeholder for Toss Payments processing economics."
+      "id": "payment-processing-fees",
+      "name": "Payment processing fees",
+      "status": "draft",
+      "basis": "Payment method; VAT excluded; merchant contract can differ",
+      "value": {
+        "type": "payment_fee_table",
+        "currency": "KRW",
+        "examples": [
+          {
+            "method": "credit_or_check_card",
+            "rate": 3.4
+          },
+          {
+            "method": "virtual_account",
+            "fixed_fee": 400
+          },
+          {
+            "method": "simple_payment",
+            "rate": 3.4
+          },
+          {
+            "method": "gift_certificate",
+            "rate": 9.0
+          },
+          {
+            "method": "mobile_physical_goods",
+            "rate": 3.5
+          },
+          {
+            "method": "mobile_digital_content",
+            "rate": 7.0
+          },
+          {
+            "method": "bank_transfer",
+            "rate": 2.0,
+            "minimum_fee": 200
+          },
+          {
+            "method": "brandpay_card",
+            "rate": 4.3
+          }
+        ]
+      },
+      "conditions": [
+        "VAT excluded; hosted signup and merchant contract can change rates."
+      ],
+      "source_ref_ids": [
+        "toss-payments-fees"
+      ],
+      "notes": "Official Toss Payments table."
     }
   ],
   "settlement_rules": [
     {
       "id": "merchant-settlement",
       "name": "Merchant settlement timing",
-      "status": "starter",
-      "basis": "Payment method and merchant contract",
-      "value": null,
-      "conditions": ["Settlement cycle and reserve rules require verification."],
-      "source_ref_ids": ["official-provider-docs"],
-      "notes": "Add payout timing, cancellation, and refund deduction rules."
+      "status": "draft",
+      "basis": "Toss Payments average settlement timing",
+      "value": {
+        "type": "settlement_note",
+        "average_days": 5,
+        "note": "average within 5 days per public page"
+      },
+      "conditions": [
+        "Actual settlement can vary by contract and risk."
+      ],
+      "source_ref_ids": [
+        "toss-payments-fees"
+      ],
+      "notes": "Official public page states average settlement timing."
     }
   ],
   "shipping_costs": [
     {
       "id": "not-applicable",
       "name": "Shipping cost not applicable",
-      "status": "starter",
+      "status": "draft",
       "basis": "Payment processor economics",
       "value": null,
-      "conditions": ["Shipping costs are outside payment processing scope."],
-      "source_ref_ids": ["official-provider-docs"],
-      "notes": "Kept for common dataset compatibility."
+      "conditions": [
+        "Shipping costs are outside payment processing scope."
+      ],
+      "source_ref_ids": [
+        "toss-payments-fees"
+      ],
+      "notes": "Common dataset compatibility placeholder."
     }
   ],
   "return_costs": [
@@ -55,35 +113,53 @@
       "status": "starter",
       "basis": "Payment method and refund policy",
       "value": null,
-      "conditions": ["Refund fees and reversals require verification."],
-      "source_ref_ids": ["official-provider-docs"],
-      "notes": "Add source-backed refund economics."
+      "conditions": [
+        "Refund fee behavior requires a dedicated source."
+      ],
+      "source_ref_ids": [
+        "toss-payments-fees"
+      ],
+      "notes": "Not materialized."
     }
   ],
   "metadata": {
     "version": "0.1.0",
-    "status": "starter",
+    "status": "draft",
     "license": "Apache-2.0",
     "last_reviewed": "2026-06-15",
-    "maintainers": ["Solverine"],
-    "ai_usage_notes": "Do not treat starter values as verified economics."
+    "maintainers": [
+      "Solverine"
+    ],
+    "ai_usage_notes": "Use only rules whose status is reviewed or draft with official source references. Do not infer missing category, settlement, shipping, return, or advertising values.",
+    "verified_scope": "Official Toss Payments public PG fee table."
   },
   "source_references": [
     {
-      "id": "official-provider-docs",
-      "title": "Official Toss Payments pricing and settlement documentation needed",
+      "id": "toss-payments-fees",
+      "title": "Toss Payments PG fee table",
       "publisher": "Toss Payments",
-      "url": null,
-      "accessed_at": null,
-      "reliability": "unknown",
-      "notes": "Replace with public official source references before marking reviewed."
+      "url": "https://www.tosspayments.com/about/fee",
+      "accessed_at": "2026-06-15",
+      "reliability": "official",
+      "notes": ""
     }
   ],
   "version_history": [
     {
       "version": "0.1.0",
       "released_at": "2026-06-15",
-      "changes": ["Initial starter economics dataset shell."]
+      "changes": [
+        "Initial starter economics dataset shell."
+      ]
+    },
+    {
+      "version": "0.2.0",
+      "released_at": "2026-06-15",
+      "changes": [
+        "Added source-backed verification status and official-source references.",
+        "Materialized representative official values where public sources were confirmed.",
+        "Kept unverified or account-specific values as starter/null to prevent unsafe agent use."
+      ]
     }
   ]
 }

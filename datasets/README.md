@@ -11,4 +11,6 @@ Every provider directory contains an `economics.json` file that follows [economi
 - `payments/`: Toss, KCP, KG.
 - `advertising/`: Coupang Ads, Naver Ads.
 
-Initial entries are `starter` datasets. They are structural examples and should not be treated as verified marketplace economics until source references are completed and reviewed.
+Dataset entries use status values to control agent trust. `draft` entries may include official source references and representative values, but they are not necessarily complete category tables. `starter` entries are structural or source-discovery placeholders and must not be treated as verified economics.
+
+See [../docs/product-sale-skill-verification.md](../docs/product-sale-skill-verification.md) for the current product-sale skill flow and platform-data verification matrix.

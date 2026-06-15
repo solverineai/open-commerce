@@ -9,8 +9,14 @@
   },
   "response": {
     "estimated_shipping_cost": null,
-    "dataset_status": "starter",
-    "matched_rules": [],
-    "warnings": ["Starter carrier dataset contains no verified rate table yet."]
+    "dataset_status": "draft",
+    "matched_rules": [
+      {
+        "rule_id": "parcel-price-lookup",
+        "source_ref_id": "cj-parcel-price",
+        "type": "calculator_reference"
+      }
+    ],
+    "warnings": ["Draft carrier dataset points to an official calculator; final price requires origin, destination, product value, size, and weight lookup."]
   }
 }

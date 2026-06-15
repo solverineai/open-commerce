@@ -16,4 +16,4 @@ Returns estimated shipping cost, matched rules, source references, and warnings.
 
 ## Notes
 
-Starter logistics datasets should produce missing-source warnings rather than verified estimates.
+Starter logistics datasets should produce missing-source warnings rather than verified estimates. Draft logistics datasets may point to official calculators or public tariff examples, but the skill must still return the source and tell the caller when a final account-specific quote is required.

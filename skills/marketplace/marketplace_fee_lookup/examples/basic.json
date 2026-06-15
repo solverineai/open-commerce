@@ -6,9 +6,23 @@
     "currency": "KRW"
   },
   "response": {
-    "matches": [],
-    "dataset_status": "starter",
-    "source_references": [],
-    "warnings": ["Starter dataset contains no verified fee rates yet."]
+    "matches": [
+      {
+        "rule_id": "commission-category-examples",
+        "category": "Computer",
+        "rate": 5.0,
+        "unit": "percent",
+        "source_ref_id": "coupang-marketplace-fee-table"
+      }
+    ],
+    "dataset_status": "draft",
+    "source_references": [
+      {
+        "id": "coupang-marketplace-fee-table",
+        "publisher": "Coupang",
+        "url": "https://cloud.mkt.coupang.com/Fee-Table"
+      }
+    ],
+    "warnings": ["Draft dataset contains representative official examples, not the full category table."]
   }
 }

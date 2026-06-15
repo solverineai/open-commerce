@@ -5,23 +5,45 @@
     "id": "hanjin",
     "name": "Hanjin",
     "category": "logistics",
-    "country_codes": ["KR"]
+    "country_codes": [
+      "KR"
+    ]
   },
   "coverage": {
-    "markets": ["KR"],
+    "markets": [
+      "KR"
+    ],
     "currency": "KRW",
-    "status": "starter"
+    "status": "draft"
   },
   "fee_structures": [
     {
-      "id": "parcel-rate",
-      "name": "Parcel delivery rate",
-      "status": "starter",
-      "basis": "Contract, weight, size, and destination dependent",
-      "value": null,
-      "conditions": ["Rates require source-backed public or contributor-provided non-confidential references."],
-      "source_ref_ids": ["official-provider-docs"],
-      "notes": "Starter placeholder for Hanjin parcel economics."
+      "id": "parcel-price-lookup",
+      "name": "Parcel fee lookup",
+      "status": "draft",
+      "basis": "Personal small-volume parcel, size, product value, and region",
+      "value": {
+        "type": "calculator_reference",
+        "surcharges": [
+          {
+            "area": "island_remote",
+            "amount": 5000,
+            "currency": "KRW"
+          },
+          {
+            "area": "jeju",
+            "amount": 3000,
+            "currency": "KRW"
+          }
+        ]
+      },
+      "conditions": [
+        "Base price must be calculated in official lookup."
+      ],
+      "source_ref_ids": [
+        "hanjin-fee-lookup"
+      ],
+      "notes": "Official source includes surcharge notes."
     }
   ],
   "settlement_rules": [
@@ -31,21 +53,31 @@
       "status": "starter",
       "basis": "Carrier contract and invoicing policy",
       "value": null,
-      "conditions": ["Billing cycle and surcharge timing require verification."],
-      "source_ref_ids": ["official-provider-docs"],
-      "notes": "Add invoicing and adjustment rules when source-backed."
+      "conditions": [
+        "Contract-specific."
+      ],
+      "source_ref_ids": [
+        "hanjin-fee-lookup"
+      ],
+      "notes": "Not verified."
     }
   ],
   "shipping_costs": [
     {
       "id": "domestic-shipping",
       "name": "Domestic shipping cost",
-      "status": "starter",
-      "basis": "Parcel size, weight, service level, and destination",
-      "value": null,
-      "conditions": ["Remote-area and oversize surcharges should be separate rules."],
-      "source_ref_ids": ["official-provider-docs"],
-      "notes": "Add source-backed domestic shipping bands."
+      "status": "draft",
+      "basis": "Parcel size, product value, and destination",
+      "value": {
+        "type": "calculator_reference"
+      },
+      "conditions": [
+        "Use official lookup before quoting a price."
+      ],
+      "source_ref_ids": [
+        "hanjin-fee-lookup"
+      ],
+      "notes": "Official lookup source."
     }
   ],
   "return_costs": [
@@ -53,37 +85,55 @@
       "id": "return-pickup",
       "name": "Return pickup cost",
       "status": "starter",
-      "basis": "Return pickup policy, size, weight, and destination",
+      "basis": "Return pickup policy and contract",
       "value": null,
-      "conditions": ["Return pickup may differ from outbound shipping."],
-      "source_ref_ids": ["official-provider-docs"],
-      "notes": "Add source-backed return pickup costs."
+      "conditions": [
+        "Return pickup may differ from outbound shipping."
+      ],
+      "source_ref_ids": [
+        "hanjin-fee-lookup"
+      ],
+      "notes": "Not verified."
     }
   ],
   "metadata": {
     "version": "0.1.0",
-    "status": "starter",
+    "status": "draft",
     "license": "Apache-2.0",
     "last_reviewed": "2026-06-15",
-    "maintainers": ["Solverine"],
-    "ai_usage_notes": "Do not treat starter values as verified economics."
+    "maintainers": [
+      "Solverine"
+    ],
+    "ai_usage_notes": "Use only rules whose status is reviewed or draft with official source references. Do not infer missing category, settlement, shipping, return, or advertising values.",
+    "verified_scope": "Official Hanjin fee lookup source and surcharge notes. Base calculated prices are not stored."
   },
   "source_references": [
     {
-      "id": "official-provider-docs",
-      "title": "Official Hanjin pricing and service documentation needed",
+      "id": "hanjin-fee-lookup",
+      "title": "Hanjin parcel fee lookup",
       "publisher": "Hanjin",
-      "url": null,
-      "accessed_at": null,
-      "reliability": "unknown",
-      "notes": "Replace with public official source references before marking reviewed."
+      "url": "https://www.hanjin.com/kor/CMS/DeliveryMgr/FeeSch.do?mCode=MN051",
+      "accessed_at": "2026-06-15",
+      "reliability": "official",
+      "notes": ""
     }
   ],
   "version_history": [
     {
       "version": "0.1.0",
       "released_at": "2026-06-15",
-      "changes": ["Initial starter economics dataset shell."]
+      "changes": [
+        "Initial starter economics dataset shell."
+      ]
+    },
+    {
+      "version": "0.2.0",
+      "released_at": "2026-06-15",
+      "changes": [
+        "Added source-backed verification status and official-source references.",
+        "Materialized representative official values where public sources were confirmed.",
+        "Kept unverified or account-specific values as starter/null to prevent unsafe agent use."
+      ]
     }
   ]
 }

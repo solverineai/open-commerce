@@ -5,10 +5,14 @@
     "id": "kcp",
     "name": "KCP",
     "category": "payments",
-    "country_codes": ["KR"]
+    "country_codes": [
+      "KR"
+    ]
   },
   "coverage": {
-    "markets": ["KR"],
+    "markets": [
+      "KR"
+    ],
     "currency": "KRW",
     "status": "starter"
   },
@@ -19,9 +23,13 @@
       "status": "starter",
       "basis": "Payment method, merchant contract, and transaction amount",
       "value": null,
-      "conditions": ["Payment method rates require source-backed official documentation."],
-      "source_ref_ids": ["official-provider-docs"],
-      "notes": "Starter placeholder for KCP processing economics."
+      "conditions": [
+        "Direct official source required."
+      ],
+      "source_ref_ids": [
+        "official-provider-docs"
+      ],
+      "notes": "No official value stored."
     }
   ],
   "settlement_rules": [
@@ -31,9 +39,13 @@
       "status": "starter",
       "basis": "Payment method and merchant contract",
       "value": null,
-      "conditions": ["Settlement cycle and reserve rules require verification."],
-      "source_ref_ids": ["official-provider-docs"],
-      "notes": "Add payout timing, cancellation, and refund deduction rules."
+      "conditions": [
+        "Direct official source required."
+      ],
+      "source_ref_ids": [
+        "official-provider-docs"
+      ],
+      "notes": "No official value stored."
     }
   ],
   "shipping_costs": [
@@ -43,9 +55,13 @@
       "status": "starter",
       "basis": "Payment processor economics",
       "value": null,
-      "conditions": ["Shipping costs are outside payment processing scope."],
-      "source_ref_ids": ["official-provider-docs"],
-      "notes": "Kept for common dataset compatibility."
+      "conditions": [
+        "Shipping costs are outside payment processing scope."
+      ],
+      "source_ref_ids": [
+        "official-provider-docs"
+      ],
+      "notes": "Common dataset compatibility placeholder."
     }
   ],
   "return_costs": [
@@ -55,9 +71,13 @@
       "status": "starter",
       "basis": "Payment method and refund policy",
       "value": null,
-      "conditions": ["Refund fees and reversals require verification."],
-      "source_ref_ids": ["official-provider-docs"],
-      "notes": "Add source-backed refund economics."
+      "conditions": [
+        "Direct official source required."
+      ],
+      "source_ref_ids": [
+        "official-provider-docs"
+      ],
+      "notes": "No official value stored."
     }
   ],
   "metadata": {
@@ -65,25 +85,39 @@
     "status": "starter",
     "license": "Apache-2.0",
     "last_reviewed": "2026-06-15",
-    "maintainers": ["Solverine"],
-    "ai_usage_notes": "Do not treat starter values as verified economics."
+    "maintainers": [
+      "Solverine"
+    ],
+    "ai_usage_notes": "Use only rules whose status is reviewed or draft with official source references. Do not infer missing category, settlement, shipping, return, or advertising values.",
+    "verified_scope": "No direct official NHN KCP public fee table was materialized in this pass. Keep unverified."
   },
   "source_references": [
     {
       "id": "official-provider-docs",
-      "title": "Official KCP pricing and settlement documentation needed",
-      "publisher": "KCP",
+      "title": "Official NHN KCP pricing documentation needed",
+      "publisher": "NHN KCP",
       "url": null,
       "accessed_at": null,
       "reliability": "unknown",
-      "notes": "Replace with public official source references before marking reviewed."
+      "notes": "Add direct official KCP URL before storing rates."
     }
   ],
   "version_history": [
     {
       "version": "0.1.0",
       "released_at": "2026-06-15",
-      "changes": ["Initial starter economics dataset shell."]
+      "changes": [
+        "Initial starter economics dataset shell."
+      ]
+    },
+    {
+      "version": "0.2.0",
+      "released_at": "2026-06-15",
+      "changes": [
+        "Added source-backed verification status and official-source references.",
+        "Materialized representative official values where public sources were confirmed.",
+        "Kept unverified or account-specific values as starter/null to prevent unsafe agent use."
+      ]
     }
   ]
 }

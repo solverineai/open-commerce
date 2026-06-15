@@ -5,23 +5,61 @@
     "id": "coupang",
     "name": "Coupang",
     "category": "marketplace",
-    "country_codes": ["KR"]
+    "country_codes": [
+      "KR"
+    ]
   },
   "coverage": {
-    "markets": ["KR"],
+    "markets": [
+      "KR"
+    ],
     "currency": "KRW",
-    "status": "starter"
+    "status": "draft"
   },
   "fee_structures": [
     {
-      "id": "commission",
-      "name": "Sales commission",
-      "status": "starter",
-      "basis": "Category and program dependent",
-      "value": null,
-      "conditions": ["Rates require source-backed official documentation."],
-      "source_ref_ids": ["official-provider-docs"],
-      "notes": "Starter placeholder for Coupang marketplace commission rules."
+      "id": "commission-category-examples",
+      "name": "Marketplace category commission examples",
+      "status": "draft",
+      "basis": "Discounted sale price by category",
+      "value": {
+        "type": "percentage_examples",
+        "unit": "percent",
+        "examples": [
+          {
+            "category": "Electronics default",
+            "rate": 7.8
+          },
+          {
+            "category": "Computer",
+            "rate": 5.0
+          },
+          {
+            "category": "Monitor",
+            "rate": 4.5
+          },
+          {
+            "category": "Furniture/Home interior default",
+            "rate": 10.8
+          },
+          {
+            "category": "Food default",
+            "rate": 10.6
+          },
+          {
+            "category": "Noodles/Ramen",
+            "rate": 10.9
+          }
+        ],
+        "payment_fee_note": "Coupang page states payment fees are not charged twice."
+      },
+      "conditions": [
+        "Examples only; full category lookup requires the complete source table."
+      ],
+      "source_ref_ids": [
+        "coupang-marketplace-fee-table"
+      ],
+      "notes": "Official examples from public fee table."
     }
   ],
   "settlement_rules": [
@@ -31,59 +69,145 @@
       "status": "starter",
       "basis": "Marketplace settlement policy",
       "value": null,
-      "conditions": ["Timing and holdback rules require verification."],
-      "source_ref_ids": ["official-provider-docs"],
-      "notes": "Add payout cycle, deductions, and holdback rules."
+      "conditions": [
+        "Timing and holdback rules require a separate official settlement source."
+      ],
+      "source_ref_ids": [
+        "coupang-marketplace-fee-table"
+      ],
+      "notes": "Not verified in the public fee table used here."
     }
   ],
   "shipping_costs": [
     {
-      "id": "seller-shipping-cost",
-      "name": "Seller shipping cost",
-      "status": "starter",
-      "basis": "Fulfillment method and carrier policy",
-      "value": null,
-      "conditions": ["Seller-fulfilled and program-specific shipping should be separated."],
-      "source_ref_ids": ["official-provider-docs"],
-      "notes": "Add source-backed domestic shipping assumptions."
+      "id": "rocket-growth-size-cost-examples",
+      "name": "Rocket Growth inbound/outbound cost examples",
+      "status": "draft",
+      "basis": "Size type; final fee depends on category, size type, and sale price",
+      "value": {
+        "type": "fee_examples",
+        "currency": "KRW",
+        "examples": [
+          {
+            "size_type": "XS",
+            "inbound_outbound_from": 600,
+            "shipping_from": 1350
+          },
+          {
+            "size_type": "S",
+            "inbound_outbound_from": 650,
+            "shipping_from": 1550
+          },
+          {
+            "size_type": "M",
+            "inbound_outbound_from": 1250,
+            "shipping_from": 2100
+          },
+          {
+            "size_type": "Large Size 1",
+            "inbound_outbound_from": 1375,
+            "shipping_from": 2200
+          },
+          {
+            "size_type": "Large Size 2",
+            "inbound_outbound_from": 1375,
+            "shipping_from": 4100
+          },
+          {
+            "size_type": "Extra large",
+            "inbound_outbound_from": 1375,
+            "shipping_from": 5600
+          }
+        ]
+      },
+      "conditions": [
+        "Rocket Growth only; seller-fulfilled courier contracts are not covered."
+      ],
+      "source_ref_ids": [
+        "coupang-rocket-growth-costs"
+      ],
+      "notes": "Official examples, not a full calculator."
     }
   ],
   "return_costs": [
     {
-      "id": "return-shipping-cost",
-      "name": "Return shipping cost",
-      "status": "starter",
-      "basis": "Return reason and fulfillment method",
-      "value": null,
-      "conditions": ["Customer-fault and seller-fault returns may differ."],
-      "source_ref_ids": ["official-provider-docs"],
-      "notes": "Add source-backed return cost rules."
+      "id": "rocket-growth-promo-return-fees",
+      "name": "Rocket Growth promotional return cost notes",
+      "status": "draft",
+      "basis": "Promotion-dependent return pickup and restock costs",
+      "value": {
+        "type": "promotion_notes",
+        "examples": [
+          {
+            "item": "return_pickup",
+            "promotion": "20 free cases per month during promotion"
+          },
+          {
+            "item": "return_restock",
+            "promotion": "20 free units per month during promotion"
+          },
+          {
+            "item": "rocket_growth_saver",
+            "promotion": "unlimited free return pickup and restock during promotion"
+          }
+        ]
+      },
+      "conditions": [
+        "Promotion can change; verify in seller account before use."
+      ],
+      "source_ref_ids": [
+        "coupang-rocket-growth-costs"
+      ],
+      "notes": "Official promotional notes only."
     }
   ],
   "metadata": {
     "version": "0.1.0",
-    "status": "starter",
+    "status": "draft",
     "license": "Apache-2.0",
     "last_reviewed": "2026-06-15",
-    "maintainers": ["Solverine"],
-    "ai_usage_notes": "Do not treat starter values as verified economics."
+    "maintainers": [
+      "Solverine"
+    ],
+    "ai_usage_notes": "Use only rules whose status is reviewed or draft with official source references. Do not infer missing category, settlement, shipping, return, or advertising values.",
+    "verified_scope": "Partial official marketplace commission examples and Rocket Growth cost examples. Not a full category table."
   },
   "source_references": [
     {
-      "id": "official-provider-docs",
-      "title": "Official Coupang seller economics documentation needed",
+      "id": "coupang-marketplace-fee-table",
+      "title": "Coupang marketplace category commission table",
       "publisher": "Coupang",
-      "url": null,
-      "accessed_at": null,
-      "reliability": "unknown",
-      "notes": "Replace with public official source references before marking reviewed."
+      "url": "https://cloud.mkt.coupang.com/Fee-Table",
+      "accessed_at": "2026-06-15",
+      "reliability": "official",
+      "notes": "Official public table. Page itself states 2019-11-25 baseline; verify before production use."
+    },
+    {
+      "id": "coupang-rocket-growth-costs",
+      "title": "Coupang Rocket Growth cost examples",
+      "publisher": "Coupang",
+      "url": "https://marketplace.coupang.com/rocket-growth",
+      "accessed_at": "2026-06-15",
+      "reliability": "official",
+      "notes": "Official public Rocket Growth page. Final fees depend on category, size type, and sale price."
     }
   ],
   "version_history": [
     {
       "version": "0.1.0",
       "released_at": "2026-06-15",
-      "changes": ["Initial starter economics dataset shell."]
+      "changes": [
+        "Initial starter economics dataset shell."
+      ]
+    },
+    {
+      "version": "0.2.0",
+      "released_at": "2026-06-15",
+      "changes": [
+        "Added source-backed verification status and official-source references.",
+        "Materialized representative official values where public sources were confirmed.",
+        "Kept unverified or account-specific values as starter/null to prevent unsafe agent use."
+      ]
     }
   ]
 }

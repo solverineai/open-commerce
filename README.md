@@ -78,7 +78,9 @@ See [ROADMAP.md](ROADMAP.md) for milestone details.
 
 ## Dataset Status
 
-The initial datasets are intentionally marked as `starter`. They define the required shape for fee structures, settlement rules, shipping costs, return costs, metadata, source references, and version history. Contributors should replace TODO source references with verified official documentation before changing a dataset status to `reviewed` or `stable`.
+Datasets use explicit trust status. `draft` datasets include official source references and representative platform values where public sources were confirmed, but they are not complete production-ready category tables. `starter` datasets are structural or source-discovery placeholders and must not be treated as verified economics.
+
+See [docs/product-sale-skill-verification.md](docs/product-sale-skill-verification.md) for the current product-sale skill flow and platform-data verification matrix.
 
 ## Governance
 

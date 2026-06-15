@@ -5,23 +5,67 @@
     "id": "ebay",
     "name": "eBay",
     "category": "marketplace",
-    "country_codes": ["US"]
+    "country_codes": [
+      "US"
+    ]
   },
   "coverage": {
-    "markets": ["US"],
+    "markets": [
+      "US"
+    ],
     "currency": "USD",
-    "status": "starter"
+    "status": "draft"
   },
   "fee_structures": [
     {
-      "id": "final-value-fee",
-      "name": "Final value fee",
-      "status": "starter",
-      "basis": "Category, price, and seller program dependent",
-      "value": null,
-      "conditions": ["Rates require source-backed official documentation."],
-      "source_ref_ids": ["official-provider-docs"],
-      "notes": "Starter placeholder for eBay marketplace fee economics."
+      "id": "final-value-fee-range",
+      "name": "Final value fee range and examples",
+      "status": "draft",
+      "basis": "Total sale amount, category, and store subscription",
+      "value": {
+        "type": "category_fee_examples",
+        "currency": "USD",
+        "overall_range_percent": {
+          "min": 2.5,
+          "max": 15.3
+        },
+        "per_order_fee": {
+          "lte_10": 0.3,
+          "gt_10": 0.4
+        },
+        "examples": [
+          {
+            "category": "Most categories",
+            "rate": 13.6,
+            "threshold": "up to 7500",
+            "over_threshold_rate": 2.35
+          },
+          {
+            "category": "Sneakers over 150",
+            "rate": 8.0,
+            "per_order_fee_charged": false
+          },
+          {
+            "category": "Heavy Equipment",
+            "rate": 3.0,
+            "threshold": "up to 15000",
+            "over_threshold_rate": 0.5
+          },
+          {
+            "category": "Books/Magazines/Movies/Music",
+            "rate": 15.3,
+            "threshold": "up to 7500",
+            "over_threshold_rate": 2.35
+          }
+        ]
+      },
+      "conditions": [
+        "Use complete eBay category table before production calculation."
+      ],
+      "source_ref_ids": [
+        "ebay-seller-fees"
+      ],
+      "notes": "Official eBay fee page examples."
     }
   ],
   "settlement_rules": [
@@ -29,11 +73,15 @@
       "id": "seller-payout",
       "name": "Seller payout timing",
       "status": "starter",
-      "basis": "Marketplace payout policy",
+      "basis": "eBay payout policy",
       "value": null,
-      "conditions": ["Payout timing and holds require verification."],
-      "source_ref_ids": ["official-provider-docs"],
-      "notes": "Add source-backed payout cycle and hold rules."
+      "conditions": [
+        "Requires separate payout source."
+      ],
+      "source_ref_ids": [
+        "ebay-seller-fees"
+      ],
+      "notes": "Not verified in fee page."
     }
   ],
   "shipping_costs": [
@@ -43,9 +91,13 @@
       "status": "starter",
       "basis": "Seller shipping policy and carrier",
       "value": null,
-      "conditions": ["Carrier, destination, and listing policy may affect costs."],
-      "source_ref_ids": ["official-provider-docs"],
-      "notes": "Add source-backed shipping examples."
+      "conditions": [
+        "Carrier label rates vary."
+      ],
+      "source_ref_ids": [
+        "ebay-seller-fees"
+      ],
+      "notes": "No fixed shipping rate."
     }
   ],
   "return_costs": [
@@ -55,35 +107,53 @@
       "status": "starter",
       "basis": "Return policy and reason",
       "value": null,
-      "conditions": ["Return responsibility and label costs require verification."],
-      "source_ref_ids": ["official-provider-docs"],
-      "notes": "Add source-backed return cost examples."
+      "conditions": [
+        "Return responsibility and label costs vary."
+      ],
+      "source_ref_ids": [
+        "ebay-seller-fees"
+      ],
+      "notes": "No fixed return rate."
     }
   ],
   "metadata": {
     "version": "0.1.0",
-    "status": "starter",
+    "status": "draft",
     "license": "Apache-2.0",
     "last_reviewed": "2026-06-15",
-    "maintainers": ["Solverine"],
-    "ai_usage_notes": "Do not treat starter values as verified economics."
+    "maintainers": [
+      "Solverine"
+    ],
+    "ai_usage_notes": "Use only rules whose status is reviewed or draft with official source references. Do not infer missing category, settlement, shipping, return, or advertising values.",
+    "verified_scope": "Official eBay final value fee range, per-order fee, and sample categories. Full category schedule not fully materialized."
   },
   "source_references": [
     {
-      "id": "official-provider-docs",
-      "title": "Official eBay seller economics documentation needed",
+      "id": "ebay-seller-fees",
+      "title": "eBay seller fees",
       "publisher": "eBay",
-      "url": null,
-      "accessed_at": null,
-      "reliability": "unknown",
-      "notes": "Replace with public official source references before marking reviewed."
+      "url": "https://www.ebay.com/sellercenter/selling/start-selling-on-ebay/seller-fees",
+      "accessed_at": "2026-06-15",
+      "reliability": "official",
+      "notes": ""
     }
   ],
   "version_history": [
     {
       "version": "0.1.0",
       "released_at": "2026-06-15",
-      "changes": ["Initial starter economics dataset shell."]
+      "changes": [
+        "Initial starter economics dataset shell."
+      ]
+    },
+    {
+      "version": "0.2.0",
+      "released_at": "2026-06-15",
+      "changes": [
+        "Added source-backed verification status and official-source references.",
+        "Materialized representative official values where public sources were confirmed.",
+        "Kept unverified or account-specific values as starter/null to prevent unsafe agent use."
+      ]
     }
   ]
 }
